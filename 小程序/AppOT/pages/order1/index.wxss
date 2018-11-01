@@ -1,0 +1,13 @@
+.card-demo {
+  margin: 30rpx 0;
+  /* box-shadow: 0 0 50rpx 0 hsla(0, 0%, 71%, 0.24); */
+}
+
+.i-card-header-extra {
+  font-weight: 600;
+
+}
+
+.page {
+  padding-bottom: 50rpx;
+}

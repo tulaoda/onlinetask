@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "任务大厅",
+    "usingComponents": {
+        "i-card": "../../dist/card/index"
+    }
+}

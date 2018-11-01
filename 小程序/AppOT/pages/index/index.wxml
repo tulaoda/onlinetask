@@ -1,13 +1,44 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper-container">
+    <block wx:for="{{imgUrls}}" wx:key="{{imgUrls.index}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" bindtap='banner_detail' />
+      </swiper-item>
     </block>
+  </swiper>
+  <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+    <block wx:for="{{msgList}}">
+      <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+        <swiper-item>
+          <view class="swiper_item">{{item.title}}</view>
+        </swiper-item>
+      </navigator>
+    </block>
+  </swiper>
+  <view class="content">
+    <view class="weui-grids">
+      <block>
+        <navigator url="../type1/index" class="weui-grid" hover-class="weui-grid_active">
+          <image class="weui-grid__icon" src="../../images/grid_1.png" />
+          <view class="weui-grid__label">提交任务</view>
+        </navigator>
+      </block>
+      <block>
+        <navigator url="../type2/index" class="weui-grid" hover-class="weui-grid_active">
+          <image class="weui-grid__icon" src="../../images/grid_2.png" />
+          <view class="weui-grid__label">任务大厅</view>
+        </navigator>
+      </block>
+
+
+    </view>
+
+
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view>
+    <image src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2184430969,1864452169&fm=26&gp=0.jpg' class='footer' />
+
   </view>
+
 </view>

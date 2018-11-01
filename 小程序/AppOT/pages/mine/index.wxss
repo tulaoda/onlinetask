@@ -1,0 +1,51 @@
+/**index.wxss**/
+
+.page {
+  height: 100%;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 100rpx;
+  background-color: #fff;
+  box-shadow: 0 0 50rpx 0 hsla(0, 0%, 71%, 0.24);
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+navigator {
+  height: auto;
+  width: auto;
+  display: block;
+  line-height: 80rpx;
+}
+
+.weui-cells_after-title {
+  margin-top: 0.8em !important;
+}
+
+.money-info {
+  padding-top: 30rpx;
+  text-align: center;
+}
+
+.demo-row {
+  font-size: 30rpx;
+}

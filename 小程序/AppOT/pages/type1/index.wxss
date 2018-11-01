@@ -1,0 +1,20 @@
+.weui-uploader {
+  padding: 40rpx;
+  margin: 30rpx 20rpx;
+  box-shadow: 0 0 50rpx 0 hsla(0, 0%, 71%, 0.24);
+  border-radius: 20rpx;
+}
+
+.weui-cells {
+  border: none;
+}
+
+.page {
+  width: 100%;
+}
+
+.btn {
+  margin-top: 100rpx;
+  width: 70%;
+  margin-left: 15%;
+}
