@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -64,6 +64,12 @@
 					"id": 4,
 					"name": "图片上传",
 					"pathName": "pages/type1/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务详情",
+					"pathName": "pages/task_detail/index",
 					"query": ""
 				}
 			]

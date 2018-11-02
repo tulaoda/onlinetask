@@ -19,13 +19,13 @@
   <view class="content">
     <view class="weui-grids">
       <block>
-        <navigator url="../type1/index" class="weui-grid" hover-class="weui-grid_active">
+        <navigator url="../upload_task/index" class="weui-grid" hover-class="weui-grid_active">
           <image class="weui-grid__icon" src="../../images/grid_1.png" />
           <view class="weui-grid__label">提交任务</view>
         </navigator>
       </block>
       <block>
-        <navigator url="../type2/index" class="weui-grid" hover-class="weui-grid_active">
+        <navigator url="../task_hall/index" class="weui-grid" hover-class="weui-grid_active">
           <image class="weui-grid__icon" src="../../images/grid_2.png" />
           <view class="weui-grid__label">任务大厅</view>
         </navigator>

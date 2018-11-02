@@ -1,4 +1,4 @@
-<view class='page'>
+<view class='container'>
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
       获取头像昵称
@@ -8,16 +8,34 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  <view class="content">
+
   <view class="money-info" hover-class="none" hover-stop-propagation="false">
     <i-row i-class="demo-row">
-      <i-col span="8" i-class="demo-col">10.00</i-col>
-      <i-col span="8" i-class="demo-col light">20.00</i-col>
-      <i-col span="8" i-class="demo-col">30.00</i-col>
-    </i-row>
-    <i-row i-class="demo-row">
-      <i-col span="8" i-class="demo-col">未提现</i-col>
-      <i-col span="8" i-class="demo-col light">已提现</i-col>
-      <i-col span="8" i-class="demo-col">余额</i-col>
+      <i-col span="8" i-class="demo-col first-col">
+        <view>
+          10.00
+        </view>
+        <view>
+          未提现
+        </view>
+      </i-col>
+      <i-col span="8" i-class="demo-col">
+        <view>
+          10.00
+        </view>
+        <view>
+          已提现
+        </view>
+      </i-col>
+      <i-col span="8" i-class="demo-col">
+        <view>
+          10.00
+        </view>
+        <view>
+          余额
+        </view>
+      </i-col>
     </i-row>
   </view>
   <view class="weui-cells weui-cells_after-title">
@@ -28,7 +46,7 @@
       <view class="weui-cell__bd">个人资料</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-    <navigator url="../order1/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="../history_task/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="../../images/order_2.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
       </view>
@@ -36,7 +54,6 @@
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
   </view>
-  
   <view class="weui-cells weui-cells_after-title">
     <navigator url="../suggest/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
@@ -46,4 +63,6 @@
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
   </view>
+  </view>
+
 </view>

@@ -4,7 +4,8 @@ const WxPay = require('../../utils/wxPay.js')
 import WxValidate from '../../utils/WxValidate'
 Page({
   data: {
-    files: []
+    files: [],
+    img_url: '  '
   },
   chooseImage: function(e) {
     var that = this
@@ -24,5 +25,6 @@ Page({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: this.data.files // 需要预览的图片http链接列表
     })
-  }
+  },
+ 
 })
