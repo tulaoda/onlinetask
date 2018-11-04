@@ -23,11 +23,12 @@ public class User {
     @Column(name = "alipay")
     private String alipay;
     private String formId;
+    private double balance;
 
     public User() {
     }
 
-    public User(String openid, String name, String address, String telephone, String wechat, String alipay, String formId) {
+    public User(String openid, String name, String address, String telephone, String wechat, String alipay, String formId, double balance) {
         this.openid = openid;
         this.name = name;
         this.address = address;
@@ -35,6 +36,7 @@ public class User {
         this.wechat = wechat;
         this.alipay = alipay;
         this.formId = formId;
+        this.balance = balance;
     }
 
     public Long getId() {
@@ -99,5 +101,13 @@ public class User {
 
     public void setFormId(String formId) {
         this.formId = formId;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }
