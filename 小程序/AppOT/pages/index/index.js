@@ -61,9 +61,8 @@ Page({
       }
     })
 
-
     var that = this
-    //轮播图
+    // 轮播图
     SERVER.getJSON('/banner/listBanner', {}, function(res) {
       const imgUrls = []
       res.data.content.map(item => {
@@ -73,7 +72,6 @@ Page({
         imgUrls: imgUrls
       })
     })
-
   },
   banner_detail: function() {
     wx.navigateTo({

@@ -1,12 +1,8 @@
 package com.ssh.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.ssh.entity.Banner;
 import com.ssh.entity.User;
 import com.ssh.service.UserService;
-//import com.ssh.utils.AesCbcUtil;
 import com.ssh.utils.HttpRequest;
 import com.ssh.wxpay.constant.Constant;
 import io.swagger.annotations.Api;
@@ -15,9 +11,14 @@ import io.swagger.annotations.ApiImplicitParams;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+
+//import com.ssh.utils.AesCbcUtil;
 
 
 @Api(value = "user")
@@ -33,8 +34,8 @@ public class UserController {
                     @ApiImplicitParam(name = "iv", value = "偏移向量 iv", required = true, dataType = "string")
             })
     @ResponseBody
-    @RequestMapping(value = "decodeUserInfo", method = RequestMethod.GET)
-    public Map decodeUserInfo(String encryptedData, String iv, String code) {
+    @RequestMapping(value = "getOpenId", method = RequestMethod.GET)
+    public Map getOpenId(String encryptedData, String iv, String code) {
 
         Map map = new HashMap();
         //登录凭证不能为空
@@ -63,6 +64,12 @@ public class UserController {
         String session_key = json.get("session_key").toString();
         //用户的唯一标识（openid）
         String openid = (String) json.get("openid");
+        if(openid!=""){
+            map.put("status", 1);
+            map.put("msg", "解密成功");
+            map.put("openid", openid);
+            return map;
+        }
 
         //////////////// 2、对encryptedData加密数据进行AES解密 ////////////////
 //        try {
@@ -87,9 +94,8 @@ public class UserController {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        map.put("status", 1);
-        map.put("msg", "解密成功");
-        map.put("openid", openid);
+        map.put("status", 500);
+        map.put("msg", "解密失败");
         return map;
     }
 
@@ -105,7 +111,8 @@ public class UserController {
     @ResponseBody
     public Map register(String openid,
                         String name,
-                        String school,
+                        String wechat,
+                        String alipay,
                         String address,
                         String telephone) {
         Map map = new HashMap();
@@ -114,7 +121,8 @@ public class UserController {
             user = new User();
             user.setOpenid(openid);
             user.setName(name);
-            user.setSchool(school);
+            user.setWechat(wechat);
+            user.setAlipay(alipay);
             user.setAddress(address);
             user.setTelephone(telephone);
             userService.save(user);
@@ -122,7 +130,8 @@ public class UserController {
             user = userService.getUserByOpenId(openid);
             user.setOpenid(openid);
             user.setName(name);
-            user.setSchool(school);
+            user.setWechat(wechat);
+            user.setAlipay(alipay);
             user.setAddress(address);
             user.setTelephone(telephone);
             userService.saveOrUpdate(user);
@@ -152,7 +161,6 @@ public class UserController {
     @ResponseBody
     public Map<String, String> findUser(String openId) {
         Map<String, String> map = new HashMap<String, String>();
-        Banner banner = new Banner();
         User user = userService.getUserByOpenId(openId);
         if (user == null) {
             map.put("msg", "执行失败！");
@@ -161,6 +169,8 @@ public class UserController {
         map.put("name", user.getName());
         map.put("tel", user.getTelephone());
         map.put("address", user.getAddress());
+        map.put("wechat", user.getWechat());
+        map.put("alipay", user.getAlipay());
         map.put("msg", "200");
         return map;
     }

@@ -14,24 +14,26 @@ public class User {
     private String openid;
     @Column(name = "name")
     private String name;
-    @Column(name = "school")
-    private String school;
     @Column(name = "address")
     private String address;
     @Column(name = "telephone")
     private String telephone;
+    @Column(name = "wechat")
+    private String wechat;
+    @Column(name = "alipay")
+    private String alipay;
     private String formId;
 
     public User() {
-
     }
 
-    public User(String openid, String name, String school, String address, String telephone, String formId) {
+    public User(String openid, String name, String address, String telephone, String wechat, String alipay, String formId) {
         this.openid = openid;
         this.name = name;
-        this.school = school;
         this.address = address;
         this.telephone = telephone;
+        this.wechat = wechat;
+        this.alipay = alipay;
         this.formId = formId;
     }
 
@@ -59,14 +61,6 @@ public class User {
         this.name = name;
     }
 
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -81,6 +75,22 @@ public class User {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getWechat() {
+        return wechat;
+    }
+
+    public void setWechat(String wechat) {
+        this.wechat = wechat;
+    }
+
+    public String getAlipay() {
+        return alipay;
+    }
+
+    public void setAlipay(String alipay) {
+        this.alipay = alipay;
     }
 
     public String getFormId() {

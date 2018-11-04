@@ -7,9 +7,9 @@ public class Constant {
 
     public static final String DOMAIN = "https://www.tulaoda.top";
 
-    public static final String APP_ID = "wxc4c6ab37b0d79d8b";
+    public static final String APP_ID = "wx842944599fa4c887";
 
-    public static final String APP_SECRET = "c49e113797c0dfa869e66a03137f4704";
+    public static final String APP_SECRET = "947ded932d6a7e2896cdc826e6b2beff";
 
     public static final String APP_KEY = "869e66a03137f4704c49e113797c0dfa";
 
