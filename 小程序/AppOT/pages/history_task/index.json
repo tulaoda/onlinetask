@@ -1,6 +1,9 @@
 {
-    "navigationBarTitleText": "任务大厅",
-    "usingComponents": {
-        "i-card": "../../dist/card/index"
-    }
+  "navigationBarTitleText": "任务记录",
+  "usingComponents": {
+    "i-card": "../../dist/card/index",
+    "i-steps": "../../dist/steps/index",
+    "i-step": "../../dist/step/index",
+    "i-button": "../../dist/button/index"
+  }
 }

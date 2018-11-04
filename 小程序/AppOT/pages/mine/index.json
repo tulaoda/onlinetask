@@ -3,6 +3,9 @@
   "usingComponents": {
     "i-panel": "../../dist/panel/index",
     "i-row": "../../dist/row/index",
-    "i-col": "../../dist/col/index"
+    "i-col": "../../dist/col/index",
+    "i-icon": "../../dist/icon/index",
+    "i-grid": "../../dist/grid/index",
+    "i-grid-item": "../../dist/grid-item/index"
   }
 }

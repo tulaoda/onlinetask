@@ -1,0 +1,9 @@
+<view class="container">
+  <i-panel title="" class="encash-input">
+    <i-input value="{{ value2 }}" type="number" title="金额" placeholder="请输入提现金额" />
+  </i-panel>
+  <i-button bind:click="handleClick" type="success" shape="circle" size="small" class="btn-submit">
+    提现
+  </i-button>
+  <!-- <view class="encash-record"></view> -->
+</view>

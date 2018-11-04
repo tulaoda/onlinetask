@@ -46,6 +46,8 @@
 }
 
 .swiper_item {
+  padding-left: 20rpx;
+  text-align: left;
   font-size: 25rpx;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -62,5 +64,5 @@
 .weui-grids {
   border-radius: 30rpx;
   box-shadow: 0 0 50rpx 0 hsla(0, 0%, 71%, 0.24);
-  
+
 }

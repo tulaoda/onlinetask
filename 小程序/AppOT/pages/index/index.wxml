@@ -1,4 +1,4 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="container">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper-container">
     <block wx:for="{{imgUrls}}" wx:key="{{imgUrls.index}}">
@@ -19,7 +19,7 @@
   <view class="content">
     <view class="weui-grids">
       <block>
-        <navigator url="../upload_task/index" class="weui-grid" hover-class="weui-grid_active">
+        <navigator url="../task_own/index" class="weui-grid" hover-class="weui-grid_active">
           <image class="weui-grid__icon" src="../../images/grid_1.png" />
           <view class="weui-grid__label">提交任务</view>
         </navigator>
@@ -30,15 +30,9 @@
           <view class="weui-grid__label">任务大厅</view>
         </navigator>
       </block>
-
-
     </view>
-
-
   </view>
   <view>
     <image src='https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2184430969,1864452169&fm=26&gp=0.jpg' class='footer' />
-
   </view>
-
 </view>

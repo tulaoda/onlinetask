@@ -5,24 +5,26 @@
 
 .i-card-header-extra {
   font-weight: 600;
-
 }
 
 .page {
   padding-bottom: 50rpx;
 }
 
-.btn-copy {
-  width: 70%;
+/* .btn-copy {
+  width: 50rpx;
   margin-left: 15%;
-}
+  padding: 0 40px;
+  box-sizing: border-box;
+} */
 
 .btn-submit {
-  margin: 100rpx 0;
+  margin: 50rpx 0;
   width: 70%;
   margin-left: 15%;
-
 }
-.content{
-  height: 
+
+.task_step {
+  margin: 16px;
+  line-height: 30rpx;
 }

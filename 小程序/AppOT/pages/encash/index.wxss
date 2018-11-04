@@ -1,0 +1,11 @@
+/* pages/encash/index.wxss */
+
+.encash-input {
+  margin: 50rpx 0;
+}
+
+.btn-submit {
+  /* margin: 100rpx 0; */
+  width: 70%;
+  margin-left: 15%;
+}

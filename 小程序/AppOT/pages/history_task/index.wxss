@@ -22,3 +22,24 @@
 .page {
   padding-bottom: 50rpx;
 }
+
+.task_step {
+  /* font-size: 20rpx; */
+  line-height: 30rpx;
+
+}
+
+.footer-items {
+  display: flex;
+  align-items: center;
+}
+
+.footer-item {
+  flex: 1;
+}
+
+.task_state {
+  text-align: right;
+  font-weight: bold;
+  font-size: 35rpx;
+}

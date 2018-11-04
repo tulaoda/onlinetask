@@ -1,0 +1,19 @@
+{
+    "navigationBarTitleText": "任务详情",
+    "usingComponents": {
+        "i-card": "../../dist/card/index",
+        "i-input": "../../dist/input/index",
+        "i-button": "../../dist/button/index",
+        "i-panel": "../../dist/panel/index",
+        "i-button": "../../dist/button/index",
+        "i-modal": "../../dist/modal/index",
+        "i-button": "../../dist/button/index",
+        "i-message": "../../dist/message/index",
+        "i-collapse": "../../dist/collapse/index",
+        "i-collapse-item": "../../dist/collapse-item/index",
+        "i-steps": "../../dist/steps/index",
+        "i-step": "../../dist/step/index",
+        "i-button": "../../dist/button/index"
+
+    }
+}

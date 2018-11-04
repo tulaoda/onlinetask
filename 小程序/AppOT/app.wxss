@@ -37,3 +37,12 @@ button[type=default] {
 .picker-input {
   text-align: center;
 }
+
+/* 任务多行显示溢出处理*/
+
+.task_content {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}

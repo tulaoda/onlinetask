@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -71,6 +71,35 @@
 					"name": "任务详情",
 					"pathName": "pages/task_detail/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "任务大厅",
+					"pathName": "pages/task_hall/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "历史记录",
+					"pathName": "pages/history_task/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "提交任务详情",
+					"pathName": "pages/task_detail_no_btn/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "提现",
+					"pathName": "pages/encash/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "提现",
+					"pathName": "pages/encash/index"
 				}
 			]
 		}

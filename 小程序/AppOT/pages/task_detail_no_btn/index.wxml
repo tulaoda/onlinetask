@@ -1,0 +1,60 @@
+<view class="container">
+  <view class="" hover-class="none" hover-stop-propagation="false">
+    <i-steps current="{{current}}" class="task_step">
+      <i-step icon="barrage">
+        <view slot="title">未提交</view>
+        <!-- <view slot="content">请提交任务</view> -->
+      </i-step>
+      <i-step icon="brush">
+        <view slot="title">审核中</view>
+        <!-- <view slot="content" icon="camera">正在审核任务</view> -->
+      </i-step>
+      <i-step icon="emoji">
+        <view slot="title">审核成功</view>
+        <!-- <view slot="content" icon="camera">正在审核任务</view> -->
+      </i-step>
+      <i-step icon="warning">
+        <view slot="title">审核失败</view>
+        <!-- <view slot="content">未提交正确信息</view> -->
+      </i-step>
+    </i-steps>
+  </view>
+  <!-- <view style="margin: 16px;text-align:center;"></view> -->
+  <i-card title="提交任务截图信息">
+    <view slot="content">
+      <block wx:for="{{imgArr}}" wx:key="*this">
+        <image src="{{item}}" bindtap="handleOpen" data-imgurl='{{item}}' />
+      </block>
+    </view>
+  </i-card>
+  <i-collapse>
+    <i-collapse-item title="任务详情" name="name1">
+      <view slot="content">
+        <i-card title="竹酒" extra="￥ 4">
+          <view slot="content">
+            韵泉竹酒它是一款有生命力的原生态健康养生酒，被誉为酒界黑马，竹酒沿用古法酿造，用现代技术将原浆酒注进竹里，与竹同长，使基酒与活竹完美融合，成酒色如同琥珀，酒质甘醇芬香浓郁，竹香四溢，具有驱风湿，疏筋活络，美容养颜等功效！是您走亲访友，朋友小聚的不二选择！招商热线 15220086930
+          </view>
+          <view slot="footer">点击复制文案即可复制文案到剪贴板</view>
+        </i-card>
+        <i-button bind:click="setClipboardData" type="success" shape="circle" size="small" class="btn-copy" data-content="这是剪切板的数据">
+          复制文案
+        </i-button>
+        <i-card title="图片">
+          <view slot="content">
+            <block wx:for="{{imgArr}}" wx:key="*this">
+              <image src="{{item}}" bindtap="handleOpen" data-imgurl='{{item}}' />
+            </block>
+          </view>
+          <view slot="footer">点击图片即可保存图片到手机</view>
+        </i-card>
+      </view>
+    </i-collapse-item>
+  </i-collapse>
+  <i-button bind:click="handleClick" type="success" shape="circle" size="small" class="btn-submit">
+    修改上传图片
+  </i-button>
+</view>
+<!-- 弹出框 -->
+<i-modal visible="{{ visible }}" bind:ok="handleClickOK" bind:cancel="handleClickCancel">
+  <view>保存图片到相册？</view>
+</i-modal>

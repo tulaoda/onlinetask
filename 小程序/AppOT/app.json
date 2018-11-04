@@ -2,14 +2,17 @@
   "pages": [
     "pages/index/index",
     "pages/mine/index",
-    "pages/task_detail/index",  
+    "pages/task_detail/index",
     "pages/task_hall/index",
     "pages/upload_task/index",
+    "pages/task_own/index",
     "pages/history_task/index",
     "pages/userinfo/index",
     "pages/suggest/index",
     "pages/admin/admin_first",
-    "pages/banner_detail/index"
+    "pages/banner_detail/index",
+    "pages/task_detail_no_btn/index",
+    "pages/encash/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
