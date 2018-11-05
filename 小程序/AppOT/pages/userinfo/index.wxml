@@ -9,7 +9,46 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-
+  <!-- <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image src="../../images/school.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd first_bd">学校</view>
+      <view class="weui-cell__bd school">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          {{array[index]}}
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image src="../../images/username.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd first_bd">姓名</view>
+      <view class="weui-cell__bd">
+        <input bindinput="onInputUsername" class="weui-input" placeholder="收件人姓名" value='{{username}}' />
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image src="../../images/address.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd first_bd">地址</view>
+      <view class="weui-cell__bd">
+        <input bindinput="onInputAddress" class="weui-input" placeholder="收件人地址" value='{{address}}' />
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image src="../../images/phoneNumber.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd first_bd">手机号</view>
+      <view class="weui-cell__bd">
+        <input bindinput="onInputPhone" class="weui-input" placeholder="收件人手机号" type="tel" value='{{phone}}' />
+      </view>
+    </view>
+  </view> -->
   <i-panel>
     <i-input value="{{ value1 }}" title="真实姓名" autofocus placeholder="名字" type="textarea" />
     <i-input value="{{ value2 }}" type="number" title="联系电话" placeholder="请输入手机号" />

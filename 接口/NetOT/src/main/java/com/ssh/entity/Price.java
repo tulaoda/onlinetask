@@ -8,7 +8,6 @@ import javax.persistence.Table;
 @Table(name = "t_price")
 public class Price {
     @Id
-
     private int id;
     private double price;
 

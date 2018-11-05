@@ -12,10 +12,10 @@
 </head>
 <body>
 <center>
-    <h1>OnlineTask后台</h1>
+    <h1>闪电跑跑后台</h1>
     @宋鑫鑫 (coderaxin@163.com)
+    <img src="./resources/img/shenshou.png"/>
+
 </center>
-
-
 </body>
 </html>

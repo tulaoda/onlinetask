@@ -2,59 +2,46 @@ package com.ssh.entity;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
 @Entity
 @Table(name = "t_taskOrder")
 public class TaskOrder {
-
-
-    //    @GenericGenerator(name = "systemUUID", strategy = "uuid")
-    //    @GeneratedValue(generator = "systemUUID")
     @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "openId")
+    @GenericGenerator(name = "systemUUID", strategy = "uuid")
+    @GeneratedValue(generator = "systemUUID")
+    private String id;
     private String openId;
-
-    @Column(name = "state")
-    private int state;//任务状态  0->未提交 1->待审核  2->审核成功 3->审核失败
-
-    @Column(name = "remarks")
+    private int State;//任务状态  0->未提交 1->待审核  2->审核成功 3->审核失败
     private String remarks;  //任务备注 若审核失败 说明原因
+    private String foreignId;
 
-    @Column(name = "foreignId")
-    private Long foreignId;
-
-
-    @OneToMany(targetEntity = ImgsTaskOrder.class, cascade = CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
-    //updatable=false很关键，如果没有它，在级联删除的时候就会报错(反转的问题)
-    @JoinColumn(name = "foreignId", updatable = false)
-    private List<ImgsTaskOrder> taskOrderImgs = new ArrayList<ImgsTaskOrder>();//图片
+//
+//    @OneToMany(targetEntity = Imgs.class, cascade = CascadeType.ALL)
+//    @Fetch(FetchMode.JOIN)
+//    //updatable=false很关键，如果没有它，在级联删除的时候就会报错(反转的问题)
+//    @JoinColumn(name = "foreignId", updatable = false)
+//    private List<Imgs> taskOrderImgs = new ArrayList<Imgs>();//图片
 
     public TaskOrder() {
     }
 
-    public TaskOrder(Long id, String openId, int state, String remarks, Long foreignId, List<ImgsTaskOrder> taskOrderImgs) {
-        this.id = id;
+    public TaskOrder(String openId, int state, String remarks, String foreignId, List<Imgs> taskOrderImgs) {
         this.openId = openId;
-        state = state;
+        State = state;
         this.remarks = remarks;
         this.foreignId = foreignId;
-        this.taskOrderImgs = taskOrderImgs;
+//        this.taskOrderImgs = taskOrderImgs;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -67,11 +54,11 @@ public class TaskOrder {
     }
 
     public int getState() {
-        return state;
+        return State;
     }
 
     public void setState(int state) {
-        state = state;
+        State = state;
     }
 
     public String getRemarks() {
@@ -82,19 +69,19 @@ public class TaskOrder {
         this.remarks = remarks;
     }
 
-    public Long getForeignId() {
+    public String getForeignId() {
         return foreignId;
     }
 
-    public void setForeignId(Long foreignId) {
+    public void setForeignId(String foreignId) {
         this.foreignId = foreignId;
     }
 
-    public List<ImgsTaskOrder> getTaskOrderImgs() {
-        return taskOrderImgs;
-    }
+//    public List<Imgs> getTaskOrderImgs() {
+//        return taskOrderImgs;
+//    }
 
-    public void setTaskOrderImgs(List<ImgsTaskOrder> taskOrderImgs) {
-        this.taskOrderImgs = taskOrderImgs;
-    }
+//    public void setTaskOrderImgs(List<Imgs> taskOrderImgs) {
+//        this.taskOrderImgs = taskOrderImgs;
+//    }
 }
