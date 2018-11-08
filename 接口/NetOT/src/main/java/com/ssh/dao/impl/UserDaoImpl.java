@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     public void saveOrUpdate(User entity) {
-        String hql = "UPDATE User SET name=? , wechat=? , address=? , telephone=?,alipay=? , WHERE openid=?";
+        String hql = "UPDATE User SET name=? , wechat=? , address=? , telephone=?,alipay=? WHERE openid=?";
         getCurrentSession().createQuery(hql).setString(0, entity.getName()).setString(1, entity.getWechat()).setString(2, entity.getAddress()).setString(3, entity.getTelephone()).setString(4, entity.getAlipay()).setString(5, entity.getOpenid()).executeUpdate();
     }
 

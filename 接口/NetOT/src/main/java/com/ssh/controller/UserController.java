@@ -100,13 +100,6 @@ public class UserController {
     }
 
 
-    @ApiImplicitParams(
-            {@ApiImplicitParam(name = "openid", value = "用户userid", required = true, dataType = "string"),
-                    @ApiImplicitParam(name = "name", value = "姓名", required = true, dataType = "string"),
-                    @ApiImplicitParam(name = "school", value = "学校", required = true, dataType = "string"),
-                    @ApiImplicitParam(name = "address", value = "地址", required = true, dataType = "string"),
-                    @ApiImplicitParam(name = "telephone", value = "电话", required = true, dataType = "string")
-            })
     @RequestMapping(value = "register", method = RequestMethod.GET)
     @ResponseBody
     public Map register(String openid,
@@ -126,6 +119,8 @@ public class UserController {
             user.setAddress(address);
             user.setTelephone(telephone);
             userService.save(user);
+            map.put("code",200);
+            return map;
         } else {
             user = userService.getUserByOpenId(openid);
             user.setOpenid(openid);
@@ -135,10 +130,9 @@ public class UserController {
             user.setAddress(address);
             user.setTelephone(telephone);
             userService.saveOrUpdate(user);
+            map.put("code",200);
+            return map;
         }
-
-        map.put("user", openid);
-        return map;
     }
 
 

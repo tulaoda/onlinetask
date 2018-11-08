@@ -7,7 +7,6 @@
   line-height: 100rpx;
 }
 
-
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
@@ -27,4 +26,8 @@
   margin-top: 100rpx;
   width: 70%;
   margin-left: 15%;
+  border-radius: 100rpx;
+  border: none;
+  background-color: #19be6b;
+  color: #fff;
 }

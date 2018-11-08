@@ -1,7 +1,5 @@
 // index.js
 // 获取应用实例
-import WxValidate from '../../utils/WxValidate'
-import weui from '../../utils/WxValidate'
 const SERVER = require('../../utils/server.js')
 const app = getApp()
 Page({
@@ -11,23 +9,15 @@ Page({
     value3: '',
     value4: '',
     value5: '',
-    value6: '',
-    value7: '',
-    school: '天津工业大学',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    array: ['天津工业大学'],
-    objectArray: [{
-      id: 0,
-      name: '天津工业大学'
-    }],
-    index: 0
   },
 
-  onLoad: function() {
+  onLoad: function () {
+
     this.getUser()
-    // this.initValidate()
+    this.initValidate()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -55,131 +45,73 @@ Page({
       })
     }
   },
+
+
+  formSubmit: function (e) {
+    //提交错误描述
+    if (!this.WxValidate.checkForm(e)) {
+      const error = this.WxValidate.errorList[0]
+      wx.showToast({
+        title: `${error.msg} `,
+        icon: 'none',
+        duration: 2000
+      })
+      return false
+    }
+    this.saveUserInfo(e)
+  },
   // 获取用户信息
-  getUser: function() {
+  getUser: function () {
     var that = this
     SERVER.getJSON('/user/findUser', {
       openId: wx.getStorageSync('openid')
-    }, function(res) {
+    }, function (res) {
       that.setData({
-        value1: res.data.tel,
-        value2: res.data.address,
-        value3: res.data.name
+        value1: res.data.name,
+        value2: res.data.tel,
+        value3: res.data.address,
+        value4: res.data.alipay,
+        value5: res.data.wechat
       })
     })
     // console.log(username + address + phone + school + openid)
   },
-  bindPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', this.data.array[e.detail.value])
-    this.setData({
-      index: e.detail.value,
-      school: this.data.array[e.detail.value]
-    })
-  },
-  onInputUsername: function(e) {
-    this.setData({
-      username: e.detail.value
-    })
-  },
-  onInputAddress: function(e) {
-    this.setData({
-      address: e.detail.value
-    })
-  },
-  onInputPhone(e) {
-    this.setData({
-      phone: e.detail.value
-    })
-  },
-  showModal(error) {
-    wx.showModal({
-      content: error.msg,
-      showCancel: false
-    })
-  },
-  saveUserInfo: function(e) {
-    const {
-      username,
-      address,
-      phone,
-      school
-    } = this.data
-    const openid = wx.getStorageSync('openid')
-    // 数据校验
-    this.initValidate()
 
-    if (username == '') {
-      wx.showModal({
-        content: '请输入姓名',
-        showCancel: false
-      })
-      return
-    }
-    if (address == '') {
-      wx.showModal({
-        content: '请输入地址',
-        showCancel: false
-      })
-      return
-    }
-    if (school == '') {
-      wx.showModal({
-        content: '请选择学校',
-        showCancel: false
-      })
-      return
-    }
-    if (phone == '') {
-      wx.showModal({
-        content: '请输入手机号',
-        showCancel: false
-      })
-      return
-    }
-    if (!/^1[34578]\d{9}$/.test(phone)) {
-      wx.showModal({
-        content: '请输入正确的手机号码',
-        showCancel: false
-      })
-      return
-    }
-    // if (!this.validate.checkForm(e)) {
-    //   const error = this.validate.errorList[0]
-    //   return alert(error.msg)
-    // }
+
+  saveUserInfo: function (e) {
     // 保存用户信息
     SERVER.getJSON('/user/register', {
-      name: username,
-      address: address,
-      telephone: phone,
-      school: school,
-      openid: openid
-    }, function(res) {
-      if (res.data.user != '') {
+      name: e.detail.value.value1,
+      telephone: e.detail.value.value2,
+      address: e.detail.value.value3,
+      alipay: e.detail.value.value4,
+      wechat: e.detail.value.value5,
+      openid: wx.getStorageSync('openid')
+    }, function (res) {
+      if (res.code = "200") {
         wx.showToast({
           title: '提交成功',
           icon: 'success',
           showCancel: false
         })
-        setTimeout(function() {
+        setTimeout(function () {
           wx.switchTab({
             url: '../mine/index'
           })
         }, 1000)
+      } else {
+        wx.showToast({
+          title: '请检查网络连接',
+          icon: 'none',
+          duration: 1000,
+          mask: true,
+        })
       }
-      // console.log(res.data)
-      // let imgUrls = [];
-      // res.data.content.map(item => {
-      //   imgUrls.push(item.imgUrl)
-      // });
-      // that.setData({
-      //   imgUrls: imgUrls,
-      // })
+
     })
-    console.log(username + address + phone + school + openid)
   },
 
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -188,33 +120,56 @@ Page({
     })
   },
   initValidate() {
-    this.validate = new WxValidate({
-      phone: {
+    //表单验证初始化
+    this.WxValidate = app.WxValidate({
+      value1: {
         required: true,
-        tel: true
+        minlength: 2,
+        maxlength: 10,
       },
-      code: {
-        required: true
-      }
+      value2: {
+        required: true,
+        tel: true,
+      },
+      value3: {
+        required: true,
+        minlength: 2,
+        maxlength: 100,
+      },
+      value4: {
+        required: true,
+        minlength: 2,
+        maxlength: 100,
+      },
+      value5: {
+        required: true,
+        minlength: 2,
+        maxlength: 100,
+      },
     }, {
-      phone: {
-        required: '请输入手机号',
-        tel: '请输入有效手机号码'
+      value1: {
+        required: '请填写您的姓名',
       },
-      code: {
-        required: '请输入验证码'
+      value2: {
+        required: '请填写您的手机号',
+      },
+      value3: {
+        required: '请输入地址',
+      },
+      value4: {
+        required: '请输入支付宝号',
+      },
+      value5: {
+        required: '请输入微信号',
       }
     })
   },
+
+
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
-    console.log('sdd')
-    wx.showModal({
-      title: '提示',
-      content: '请输入有效手机号码',
-      showCancel: false
-    })
+  onHide: function () {
+
   }
 })

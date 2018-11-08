@@ -1,7 +1,6 @@
 // pages/type1/index.js
 const SERVER = require('../../utils/server.js')
 const WxPay = require('../../utils/wxPay.js')
-import WxValidate from '../../utils/WxValidate'
 Page({
   data: {
     files: [],
