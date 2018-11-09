@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  // baseURL: 'http://www.tulaoda.top/api/NetSDPP-1.0',//生产环境
+  // baseURL: 'http://www.tulaoda.top/api/NetOT', //生产环境
   baseURL: '/api', // 开发环境
   timeout: 10000
 })

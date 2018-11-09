@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://www.tulaoda.top/api/NetSDPP-1.0',  // 接口域名
+        target: 'http://www.tulaoda.top/api/NetOT',  // 接口域名
         changeOrigin: true,  //是否跨域
         secure:false,
         logLevel:'debug',

@@ -28,7 +28,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     public List<User> findAll() {
-        return null;
+
+        String hql = "from User";
+        return getCurrentSession().createQuery(hql).list();
+
     }
 
     public void persist(User entity) {

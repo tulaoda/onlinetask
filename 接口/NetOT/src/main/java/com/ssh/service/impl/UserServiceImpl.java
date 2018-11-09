@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> findAll() {
-        return null;
+        return userDao.findAll();
     }
 
     public void persist(User entity) {

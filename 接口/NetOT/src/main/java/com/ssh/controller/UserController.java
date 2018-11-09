@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //import com.ssh.utils.AesCbcUtil;
@@ -64,7 +65,7 @@ public class UserController {
         String session_key = json.get("session_key").toString();
         //用户的唯一标识（openid）
         String openid = (String) json.get("openid");
-        if(openid!=""){
+        if (openid != "") {
             map.put("status", 1);
             map.put("msg", "解密成功");
             map.put("openid", openid);
@@ -119,7 +120,7 @@ public class UserController {
             user.setAddress(address);
             user.setTelephone(telephone);
             userService.save(user);
-            map.put("code",200);
+            map.put("code", 200);
             return map;
         } else {
             user = userService.getUserByOpenId(openid);
@@ -130,7 +131,7 @@ public class UserController {
             user.setAddress(address);
             user.setTelephone(telephone);
             userService.saveOrUpdate(user);
-            map.put("code",200);
+            map.put("code", 200);
             return map;
         }
     }
@@ -156,7 +157,7 @@ public class UserController {
     public Map<String, String> findUser(String openId) {
         Map<String, String> map = new HashMap<String, String>();
         User user = userService.getUserByOpenId(openId);
-        if (user == null) {
+        if (user == null) { 
             map.put("msg", "执行失败！");
             return map;
         }
@@ -166,6 +167,27 @@ public class UserController {
         map.put("wechat", user.getWechat());
         map.put("alipay", user.getAlipay());
         map.put("msg", "200");
+        return map;
+    }
+
+
+    @RequestMapping(value = "findAllUser", method = RequestMethod.GET)
+    @ResponseBody
+    public Map findAllUser() {
+        Map map = new HashMap();
+        List<User> list = null;
+        try {
+            list = userService.findAll();
+            map.put("data", list);
+            map.put("msg", "执行成功！");
+            map.put("code", 200);
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        map.put("data", list);
+        map.put("msg", "执行失败");
+        map.put("code", 500);
         return map;
     }
 

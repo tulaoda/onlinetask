@@ -2,7 +2,7 @@
 <template>
     <div class="container">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-            <h1>闪电跑跑后台管理</h1>
+            <h1>OnlineTask后台管理</h1>
             <el-form-item prop="name">
                 <el-input v-model="ruleForm.name" placeholder="账号"></el-input>
             </el-form-item>

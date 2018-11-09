@@ -21,7 +21,7 @@ public class Task {
     private String createTime;//创建时间
     private int totalNo;//任务总量
     private int remainNo;//剩余数量
-    private int State;//任务状态  1 任务进行中  2 任务已满员  3 任务人为结束
+    private int state;//任务状态  1 任务进行中  2 任务已满员  3 任务人为结束
     @OneToMany(targetEntity = Imgs.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     //updatable=false很关键，如果没有它，在级联删除的时候就会报错(反转的问题)
@@ -44,7 +44,7 @@ public class Task {
         this.createTime = createTime;
         this.totalNo = totalNo;
         this.remainNo = remainNo;
-        State = state;
+        this.state = state;
         this.taskImgs = taskImgs;
         this.taskOrders = taskOrders;
     }
@@ -106,11 +106,11 @@ public class Task {
     }
 
     public int getState() {
-        return State;
+        return state;
     }
 
     public void setState(int state) {
-        State = state;
+        this.state = state;
     }
 
     public List<Imgs> getTaskImgs() {
