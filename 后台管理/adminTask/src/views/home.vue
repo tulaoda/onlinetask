@@ -47,7 +47,7 @@ import mySlider from '@/components/layout/slider.vue'
 export default {
   data() {
     return {
-      isCollapse:true,
+      isCollapse:false,
     };
   },
   methods: {

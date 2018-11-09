@@ -3,7 +3,7 @@ import user from '@/views/user/user.vue'
 import goodList from '@/views/goods/good-list.vue'
 import orderList from '@/views/orders/order-list.vue'
 import orderList2 from '@/views/orders/order-list_2.vue'
-
+import taskUpload from '@/views/task/taskUpload.vue'
 export default [{
     path: '/setting',
     name: 'setting',
@@ -42,7 +42,7 @@ export default [{
         auth: false, // 这个字段以后用来验证必须登录才可以查看
         icon: 'el-icon-loading'
       },
-      component: goodList
+      component: user
     }, {
       path: 'taskUpload',
       name: 'taskUpload',
@@ -51,9 +51,8 @@ export default [{
         auth: false, // 这个字段以后用来验证必须登录才可以查看
         icon: 'el-icon-loading'
       },
-      component: goodList
+      component: taskUpload
     }]
-
   },
   {
     path: '/orders',
@@ -85,6 +84,5 @@ export default [{
         component: orderList2
       }
     ]
-
-  }
+  }     
 ]
