@@ -9,20 +9,31 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private Long id;
+
     @Column(name = "openid")
     private String openid;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "address")
     private String address;
+
     @Column(name = "telephone")
     private String telephone;
+
     @Column(name = "wechat")
     private String wechat;
+
     @Column(name = "alipay")
     private String alipay;
+
+    @Column(name = "formId")
     private String formId;
+
+    @Column(name = "balance")
     private double balance;
 
     public User() {
