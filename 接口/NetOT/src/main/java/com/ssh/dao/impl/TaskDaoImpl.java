@@ -53,4 +53,14 @@ public class TaskDaoImpl implements TaskDao {
     public void flush() {
 
     }
+
+    @Override
+    public List<Task> findAllTask(int state, int page, int pageSize) {
+//        String hql = "from Task where state=? order by taskId desc";
+        String hql = "from Task order by taskId desc";
+
+        return getCurrentSession().createQuery(hql).
+                setFirstResult((page - 1) * pageSize)
+                .setMaxResults(pageSize).list();
+    }
 }

@@ -4,7 +4,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,18 +44,18 @@ public class Task implements java.io.Serializable {
     @OneToMany(targetEntity = ImgsTask.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "taskID")
-    private List<ImgsTask> taskImgs = new ArrayList<ImgsTask>();
+    private Set<ImgsTask> taskImgs = new HashSet<ImgsTask>();
 
 
     @OneToMany(targetEntity = TaskOrder.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "taskID")
-    private List<TaskOrder> taskOrders = new ArrayList<TaskOrder>();//图片
+    private Set<TaskOrder> taskOrders = new HashSet<TaskOrder>();//图片
 
     public Task() {
     }
 
-    public Task(String name, double commission, String article, String createTime, int totalNo, int remainNo, int state, List<ImgsTask> taskImgs, List<TaskOrder> taskOrders) {
+    public Task(String name, double commission, String article, String createTime, int totalNo, int remainNo, int state, Set<ImgsTask> taskImgs, Set<TaskOrder> taskOrders) {
         this.name = name;
         this.commission = commission;
         this.article = article;
@@ -132,19 +131,19 @@ public class Task implements java.io.Serializable {
         this.state = state;
     }
 
-    public List<ImgsTask> getTaskImgs() {
+    public Set<ImgsTask> getTaskImgs() {
         return taskImgs;
     }
 
-    public void setTaskImgs(List<ImgsTask> taskImgs) {
+    public void setTaskImgs(Set<ImgsTask> taskImgs) {
         this.taskImgs = taskImgs;
     }
 
-    public List<TaskOrder> getTaskOrders() {
+    public Set<TaskOrder> getTaskOrders() {
         return taskOrders;
     }
 
-    public void setTaskOrders(List<TaskOrder> taskOrders) {
+    public void setTaskOrders(Set<TaskOrder> taskOrders) {
         this.taskOrders = taskOrders;
     }
 }

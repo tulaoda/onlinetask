@@ -17,7 +17,7 @@ public class ImgsTaskOrder implements java.io.Serializable{
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "taskOrderID", unique = true)
+    @JoinColumn(name = "taskOrderID", unique = true)
     private TaskOrder taskOrder;
 
     public ImgsTaskOrder() {

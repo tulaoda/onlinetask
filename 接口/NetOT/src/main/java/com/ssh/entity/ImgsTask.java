@@ -17,7 +17,7 @@ public class ImgsTask implements java.io.Serializable {
     private String url;
 
     @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "taskID", unique = true)
+    @JoinColumn(name = "taskID", unique = true)
     private Task task;
 
 

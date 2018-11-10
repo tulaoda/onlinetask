@@ -48,4 +48,9 @@ public class TaskServiceImpl implements TaskService {
     public void flush() {
         taskDao.flush();
     }
+
+    @Override
+    public List<Task> findAllTask(int state, int page, int pageSize) {
+        return taskDao.findAllTask(state, page, pageSize);
+    }
 }

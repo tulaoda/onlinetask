@@ -30,7 +30,7 @@ public class TaskController {
     ) {
         Map map = new HashMap();
         Task task = new Task();
-        List<ImgsTask> imgsTask = new ArrayList<ImgsTask>();
+        Set<ImgsTask> imgsTask = new HashSet<ImgsTask>();
         task.setName(name);
         task.setCommission(commission);
         task.setArticle(article);
@@ -60,14 +60,11 @@ public class TaskController {
     @ApiImplicitParams({})
     @RequestMapping(value = "findAllTask", method = RequestMethod.GET)
     @ResponseBody
-//    @RequestParam(value = "page", required = false, defaultValue = "") int page,
-//    @RequestParam(value = "pageSize", required = false, defaultValue = "") int pageSize,
-//    @RequestParam(value = "state", required = false, defaultValue = "") int state
-    public Map findAllTask(){
+    public Map findAllTask(int state, int page, int pageSize) {
         Map map = new HashMap();
         List<Task> tasks = null;
         try {
-            tasks = taskService.findAll();
+            tasks = taskService.findAllTask(state, page, pageSize);
         } catch (Exception e) {
             e.printStackTrace();
         }

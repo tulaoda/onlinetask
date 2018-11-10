@@ -4,6 +4,7 @@ import goodList from '@/views/goods/good-list.vue'
 import orderList from '@/views/orders/order-list.vue'
 import orderList2 from '@/views/orders/order-list_2.vue'
 import taskUpload from '@/views/task/taskUpload.vue'
+import taskManage from '@/views/task/taskManage.vue'
 export default [{
     path: '/setting',
     name: 'setting',
@@ -42,7 +43,7 @@ export default [{
         auth: false, // 这个字段以后用来验证必须登录才可以查看
         icon: 'el-icon-loading'
       },
-      component: user
+      component: taskManage
     }, {
       path: 'taskUpload',
       name: 'taskUpload',
