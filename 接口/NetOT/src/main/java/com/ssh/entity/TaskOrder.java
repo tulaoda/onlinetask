@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "t_taskOrder")
-public class TaskOrder implements java.io.Serializable{
+public class TaskOrder implements java.io.Serializable {
 
 
     @Id
@@ -37,12 +37,12 @@ public class TaskOrder implements java.io.Serializable{
     @OneToMany(targetEntity = ImgsTaskOrder.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "taskOrderID")
-    private Set taskOrderImgs = new HashSet(0);
+    private List<ImgsTaskOrder> taskOrderImgs = new ArrayList<ImgsTaskOrder>();
 
     public TaskOrder() {
     }
 
-    public TaskOrder(String openId, int state, String remarks, Task task, Set taskOrderImgs) {
+    public TaskOrder(String openId, int state, String remarks, Task task, List<ImgsTaskOrder> taskOrderImgs) {
         this.openId = openId;
         this.state = state;
         this.remarks = remarks;
@@ -90,11 +90,11 @@ public class TaskOrder implements java.io.Serializable{
         this.task = task;
     }
 
-    public Set getTaskOrderImgs() {
+    public List<ImgsTaskOrder> getTaskOrderImgs() {
         return taskOrderImgs;
     }
 
-    public void setTaskOrderImgs(Set taskOrderImgs) {
+    public void setTaskOrderImgs(List<ImgsTaskOrder> taskOrderImgs) {
         this.taskOrderImgs = taskOrderImgs;
     }
 }

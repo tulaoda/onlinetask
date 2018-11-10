@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "t_imgs_task")
-public class ImgsTask implements java.io.Serializable{
+public class ImgsTask implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -17,7 +17,7 @@ public class ImgsTask implements java.io.Serializable{
     private String url;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "taskID")
+//    @JoinColumn(name = "taskID", unique = true)
     private Task task;
 
 

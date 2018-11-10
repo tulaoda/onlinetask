@@ -30,7 +30,7 @@ public class TaskController {
     ) {
         Map map = new HashMap();
         Task task = new Task();
-        Set<ImgsTask> imgsTask = new HashSet<ImgsTask>();
+        List<ImgsTask> imgsTask = new ArrayList<ImgsTask>();
         task.setName(name);
         task.setCommission(commission);
         task.setArticle(article);

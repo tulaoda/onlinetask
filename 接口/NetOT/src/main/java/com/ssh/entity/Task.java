@@ -45,18 +45,18 @@ public class Task implements java.io.Serializable {
     @OneToMany(targetEntity = ImgsTask.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "taskID")
-    private Set taskImgs = new HashSet(0);
+    private List<ImgsTask> taskImgs = new ArrayList<ImgsTask>();
 
 
     @OneToMany(targetEntity = TaskOrder.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "taskID")
-    private Set taskOrders = new HashSet();//图片
+    private List<TaskOrder> taskOrders = new ArrayList<TaskOrder>();//图片
 
     public Task() {
     }
 
-    public Task(String name, double commission, String article, String createTime, int totalNo, int remainNo, int state, Set taskImgs, Set taskOrders) {
+    public Task(String name, double commission, String article, String createTime, int totalNo, int remainNo, int state, List<ImgsTask> taskImgs, List<TaskOrder> taskOrders) {
         this.name = name;
         this.commission = commission;
         this.article = article;
@@ -132,19 +132,19 @@ public class Task implements java.io.Serializable {
         this.state = state;
     }
 
-    public Set getTaskImgs() {
+    public List<ImgsTask> getTaskImgs() {
         return taskImgs;
     }
 
-    public void setTaskImgs(Set taskImgs) {
+    public void setTaskImgs(List<ImgsTask> taskImgs) {
         this.taskImgs = taskImgs;
     }
 
-    public Set getTaskOrders() {
+    public List<TaskOrder> getTaskOrders() {
         return taskOrders;
     }
 
-    public void setTaskOrders(Set taskOrders) {
+    public void setTaskOrders(List<TaskOrder> taskOrders) {
         this.taskOrders = taskOrders;
     }
 }
