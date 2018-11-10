@@ -2,9 +2,12 @@ package com.ssh.controller;
 
 import com.ssh.entity.Result;
 import io.swagger.annotations.Api;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +15,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Api(value = "upload")
@@ -26,9 +31,10 @@ public class UploadController {
      * @param request
      * @return
      */
-    @RequestMapping("/upload")
-    public Result upload(@RequestParam("picture") MultipartFile picture, HttpServletRequest request) {
-
+    @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public Map upload(@RequestParam("picture") MultipartFile picture, HttpServletRequest request) {
+        Map map = new HashMap();
         //获取文件在服务器的储存位置
         String path = "/home/wwwroot/default/web/upload";
         File filePath = new File(path);
@@ -57,17 +63,25 @@ public class UploadController {
 
         //在指定路径下创建一个文件
         File targetFile = new File(path, fileName);
-
+        String ThumbnailsPath = path + "/" + fileName;//上传路径
         //将文件保存到服务器指定位置
         try {
             picture.transferTo(targetFile);
             System.out.println("上传成功");
+            //图片压缩
+            Thumbnails.of(ThumbnailsPath).size(800, 600).toFile(ThumbnailsPath);
             //将文件在服务器的存储路径返回
-            return new Result(true, "http://www.tulaoda.top/web/upload/" + fileName);
+            map.put("url", "http://www.tulaoda.top/web/upload/" + fileName);
+            map.put("code", 200);
+            return map;
+//            return new Result(true, "http://www.tulaoda.top/web/upload/" + fileName);
         } catch (IOException e) {
             System.out.println("上传失败");
             e.printStackTrace();
-            return new Result(false, "上传失败");
+            map.put("msg", "上传失败");
+            map.put("code", 500);
+            return map;
+//            return new Result(false, "上传失败");
         }
     }
 

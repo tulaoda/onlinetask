@@ -5,15 +5,17 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "t_taskOrder")
-public class TaskOrder {
+public class TaskOrder implements java.io.Serializable{
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
@@ -26,25 +28,25 @@ public class TaskOrder {
     @Column(name = "remarks")
     private String remarks;  //任务备注 若审核失败 说明原因
 
-    @Column(name = "foreignId")
-    private Long foreignId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "taskID")
+    private Task task;
 
 
     @OneToMany(targetEntity = ImgsTaskOrder.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
-    //updatable=false很关键，如果没有它，在级联删除的时候就会报错(反转的问题)
-    @JoinColumn(name = "foreignId", updatable = false)
-    private List<ImgsTaskOrder> taskOrderImgs = new ArrayList<ImgsTaskOrder>();//图片
+    @JoinColumn(name = "taskOrderID")
+    private Set taskOrderImgs = new HashSet(0);
 
     public TaskOrder() {
     }
 
-    public TaskOrder(Long id, String openId, int state, String remarks, Long foreignId, List<ImgsTaskOrder> taskOrderImgs) {
-        this.id = id;
+    public TaskOrder(String openId, int state, String remarks, Task task, Set taskOrderImgs) {
         this.openId = openId;
-        state = state;
+        this.state = state;
         this.remarks = remarks;
-        this.foreignId = foreignId;
+        this.task = task;
         this.taskOrderImgs = taskOrderImgs;
     }
 
@@ -69,7 +71,7 @@ public class TaskOrder {
     }
 
     public void setState(int state) {
-        state = state;
+        this.state = state;
     }
 
     public String getRemarks() {
@@ -80,19 +82,19 @@ public class TaskOrder {
         this.remarks = remarks;
     }
 
-    public Long getForeignId() {
-        return foreignId;
+    public Task getTask() {
+        return task;
     }
 
-    public void setForeignId(Long foreignId) {
-        this.foreignId = foreignId;
+    public void setTask(Task task) {
+        this.task = task;
     }
 
-    public List<ImgsTaskOrder> getTaskOrderImgs() {
+    public Set getTaskOrderImgs() {
         return taskOrderImgs;
     }
 
-    public void setTaskOrderImgs(List<ImgsTaskOrder> taskOrderImgs) {
+    public void setTaskOrderImgs(Set taskOrderImgs) {
         this.taskOrderImgs = taskOrderImgs;
     }
 }

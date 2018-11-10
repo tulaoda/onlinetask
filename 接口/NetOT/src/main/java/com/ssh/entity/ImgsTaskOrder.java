@@ -6,25 +6,26 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "t_imgs_task_order")
-public class ImgsTaskOrder {
+public class ImgsTaskOrder implements java.io.Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
 
     @Column(name = "url")
     private String url;
 
-    @Column(name = "foreignId")
-    private Long foreignId;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "taskOrderID")
+    private TaskOrder taskOrder;
 
     public ImgsTaskOrder() {
     }
 
-    public ImgsTaskOrder(String url, Long foreignId) {
+    public ImgsTaskOrder(String url, TaskOrder taskOrder) {
         this.url = url;
-        this.foreignId = foreignId;
+        this.taskOrder = taskOrder;
     }
 
     public long getId() {
@@ -43,11 +44,11 @@ public class ImgsTaskOrder {
         this.url = url;
     }
 
-    public Long getForeignId() {
-        return foreignId;
+    public TaskOrder getTaskOrder() {
+        return taskOrder;
     }
 
-    public void setForeignId(Long foreignId) {
-        this.foreignId = foreignId;
+    public void setTaskOrder(TaskOrder taskOrder) {
+        this.taskOrder = taskOrder;
     }
 }

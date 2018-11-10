@@ -5,16 +5,18 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "t_task")
-public class Task {
+public class Task implements java.io.Serializable {
 
     //    @GenericGenerator(name = "systemUUID", strategy = "uuid")
 //    @GeneratedValue(generator = "systemUUID")
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "taskId")
     private Long taskId;//任务id
 
@@ -42,29 +44,26 @@ public class Task {
 
     @OneToMany(targetEntity = ImgsTask.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
-    //updatable=false很关键，如果没有它，在级联删除的时候就会报错(反转的问题)
-    @JoinColumn(name = "foreignId", updatable = false)
-    private List<ImgsTask> taskImgs = new ArrayList<ImgsTask>();//图片
-
+    @JoinColumn(name = "taskID")
+    private Set taskImgs = new HashSet(0);
 
 
     @OneToMany(targetEntity = TaskOrder.class, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
-    //updatable=false很关键，如果没有它，在级联删除的时候就会报错(反转的问题)
-    @JoinColumn(name = "foreignId", updatable = false)
-    private List<TaskOrder> taskOrders = new ArrayList<TaskOrder>();//图片
+    @JoinColumn(name = "taskID")
+    private Set taskOrders = new HashSet();//图片
 
     public Task() {
     }
 
-    public Task(String name, double commission, String article, String createTime, int totalNo, int remainNo, int state, List<ImgsTask> taskImgs, List<TaskOrder> taskOrders) {
+    public Task(String name, double commission, String article, String createTime, int totalNo, int remainNo, int state, Set taskImgs, Set taskOrders) {
         this.name = name;
         this.commission = commission;
         this.article = article;
         this.createTime = createTime;
         this.totalNo = totalNo;
         this.remainNo = remainNo;
-        state = state;
+        this.state = state;
         this.taskImgs = taskImgs;
         this.taskOrders = taskOrders;
     }
@@ -130,22 +129,22 @@ public class Task {
     }
 
     public void setState(int state) {
-        state = state;
+        this.state = state;
     }
 
-    public List<ImgsTask> getTaskImgs() {
+    public Set getTaskImgs() {
         return taskImgs;
     }
 
-    public void setTaskImgs(List<ImgsTask> taskImgs) {
+    public void setTaskImgs(Set taskImgs) {
         this.taskImgs = taskImgs;
     }
 
-    public List<TaskOrder> getTaskOrders() {
+    public Set getTaskOrders() {
         return taskOrders;
     }
 
-    public void setTaskOrders(List<TaskOrder> taskOrders) {
+    public void setTaskOrders(Set taskOrders) {
         this.taskOrders = taskOrders;
     }
 }
