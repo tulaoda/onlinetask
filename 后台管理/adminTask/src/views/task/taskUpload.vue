@@ -93,9 +93,8 @@ export default {
 
                 console.log(that);
                 that.$refs[formName].resetFields();
-                that.handleRemove();
                 setTimeout(() => {
-                  this.$router.push("taskManage");
+                  this.$router.push("/taskManage");
                 }, 2000);
               } else {
                 const h = this.$createElement;

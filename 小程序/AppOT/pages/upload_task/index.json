@@ -3,7 +3,6 @@
     "usingComponents": {
         "i-input": "../../dist/input/index",
         "i-button": "../../dist/button/index",
-        "i-panel": "../../dist/panel/index",
-        "i-button": "../../dist/button/index"
+        "i-panel": "../../dist/panel/index"
     }
 }

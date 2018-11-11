@@ -39,7 +39,7 @@
       </view>
     </view>
   </view>
-  <i-button bind:click="saveUserInfo" type="success" shape="circle" size="small" class="btn">
-    提交
-  </i-button>
+
+  <i-button bind:click="handleClick" type="success" shape="circle" size="small" class="btn">
+    提交 </i-button>
 </view>
