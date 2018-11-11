@@ -16,17 +16,12 @@ public class ImgsTask implements java.io.Serializable {
     @Column(name = "url")
     private String url;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "taskID", unique = true)
-    private Task task;
-
 
     public ImgsTask() {
     }
 
-    public ImgsTask(String url, Task task) {
+    public ImgsTask(String url) {
         this.url = url;
-        this.task = task;
     }
 
     public long getId() {
@@ -43,13 +38,5 @@ public class ImgsTask implements java.io.Serializable {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
     }
 }

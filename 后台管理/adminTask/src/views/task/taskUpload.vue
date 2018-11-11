@@ -15,7 +15,7 @@
             <el-input v-model="form.totalNo"></el-input>
           </el-form-item>
           <el-form-item label="文案" prop="article">
-            <el-input type="textarea" v-model="form.article" rows="8"></el-input>
+            <el-input type="textarea" v-model="form.article" rows="10"></el-input>
           </el-form-item>
         </div>
         <div class="right">
@@ -90,15 +90,22 @@ export default {
                   title: "提示",
                   message: h("i", { style: "color: teal" }, "任务发布成功")
                 });
-                console.log(that)
+
+                console.log(that);
                 that.$refs[formName].resetFields();
-                that.handleRemove()
-              }
-              else{
-                 const h = this.$createElement;
+                that.handleRemove();
+                setTimeout(() => {
+                  this.$router.push("taskManage");
+                }, 2000);
+              } else {
+                const h = this.$createElement;
                 this.$notify({
                   title: "提示",
-                  message: h("i", { style: "color: teal" }, "任务发布失败，请联系管理员")
+                  message: h(
+                    "i",
+                    { style: "color: teal" },
+                    "任务发布失败，请联系管理员"
+                  )
                 });
               }
               console.log(res);

@@ -41,21 +41,19 @@ public class Task implements java.io.Serializable {
     private int state;//任务状态  1 任务进行中  2 任务已满员  3 任务人为结束
 
 
-    @OneToMany(targetEntity = ImgsTask.class, cascade = CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "taskID")
-    private Set<ImgsTask> taskImgs = new HashSet<ImgsTask>();
+    private Set<ImgsTask> taskImgs = new HashSet<ImgsTask>(0);
 
-
-    @OneToMany(targetEntity = TaskOrder.class, cascade = CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
-    @JoinColumn(name = "taskID")
-    private Set<TaskOrder> taskOrders = new HashSet<TaskOrder>();//图片
+//
+//    @OneToMany(cascade = {CascadeType.ALL})
+//    @JoinColumn(name = "taskID")
+//    private Set<TaskOrder> taskOrders = new HashSet<TaskOrder>(0);//图片
 
     public Task() {
     }
 
-    public Task(String name, double commission, String article, String createTime, int totalNo, int remainNo, int state, Set<ImgsTask> taskImgs, Set<TaskOrder> taskOrders) {
+    public Task(String name, double commission, String article, String createTime, int totalNo, int remainNo, int state, Set<ImgsTask> taskImgs) {
         this.name = name;
         this.commission = commission;
         this.article = article;
@@ -64,7 +62,6 @@ public class Task implements java.io.Serializable {
         this.remainNo = remainNo;
         this.state = state;
         this.taskImgs = taskImgs;
-        this.taskOrders = taskOrders;
     }
 
     public Long getTaskId() {
@@ -139,11 +136,4 @@ public class Task implements java.io.Serializable {
         this.taskImgs = taskImgs;
     }
 
-    public Set<TaskOrder> getTaskOrders() {
-        return taskOrders;
-    }
-
-    public void setTaskOrders(Set<TaskOrder> taskOrders) {
-        this.taskOrders = taskOrders;
-    }
 }

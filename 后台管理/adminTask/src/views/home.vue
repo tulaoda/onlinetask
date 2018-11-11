@@ -24,6 +24,7 @@
   right: 0;
   bottom: 0;
   overflow: hidden;
+  width:auto;
   display: flex;
   .left-slider {
     width: auto;
@@ -33,32 +34,32 @@
     position: relative;
     .el-main {
       height: 100%;
-      overflow: auto;
+      overflow: hidden;
     }
   }
-};
+}
 </style>
 
 
 <script>
-import myHeader from '@/components/layout/header.vue'
-import mySlider from '@/components/layout/slider.vue'
+import myHeader from "@/components/layout/header.vue";
+import mySlider from "@/components/layout/slider.vue";
 
 export default {
   data() {
     return {
-      isCollapse:false,
+      isCollapse: false
     };
   },
   methods: {
     handelCollapse(val) {
       this.isCollapse = val;
-      console.log(val)
+      console.log(val);
     }
   },
   components: {
     myHeader,
     mySlider
-  },
+  }
 };
 </script>

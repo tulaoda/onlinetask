@@ -41,10 +41,8 @@ public class TaskController {
         for (int i = 0; i < taskImgs.length; i++) {
             ImgsTask img = new ImgsTask();
             img.setUrl(taskImgs[i]);
-            imgsTask.add(img);
-            img.setTask(task);
+            task.getTaskImgs().add(img);
         }
-        task.setTaskImgs(imgsTask);
         long id = taskService.save(task);
         if (id > 0) {
             map.put("msg", "执行成功！");
