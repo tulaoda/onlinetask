@@ -28,3 +28,7 @@
   margin: 16px;
   line-height: 30rpx;
 }
+
+.task_detail {
+  margin-top: 30rpx;
+}

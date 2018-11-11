@@ -27,7 +27,7 @@
       </block>
     </view>
   </i-card>
-  <i-collapse>
+  <i-collapse class="task_detail">
     <i-collapse-item title="任务详情" name="name1">
       <view slot="content">
         <i-card title="竹酒" extra="￥ 4">

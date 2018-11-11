@@ -20,7 +20,7 @@
         </div>
         <div class="right">
           <el-form-item label="任务图片">
-            <el-upload action="api/upload" name="picture" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-success="handleSuccess">
+            <el-upload action="api/upload" name="picture" ref="upload" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-success="handleSuccess">
               <i class="el-icon-plus"></i>
             </el-upload>
             <el-dialog :visible.sync="dialogVisible">
@@ -93,8 +93,15 @@ export default {
 
                 console.log(that);
                 that.$refs[formName].resetFields();
+                // const mainImg = this.$refs.upload;
+                // if (mainImg && mainImg.length) {
+                //   mainImg.forEach(item => {
+                //     // item.uploadFiles.length = 0;
+                //     item.clearFiles();
+                //   });
+                // }
                 setTimeout(() => {
-                  this.$router.push("/taskManage");
+                  this.$router.push("taskManage");
                 }, 2000);
               } else {
                 const h = this.$createElement;
