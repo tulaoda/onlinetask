@@ -4,42 +4,42 @@
       <view class="weui-uploader">
         <view class="weui-uploader__hd">
           <view class="weui-uploader__title">任务开始截图</view>
-          <view class="weui-uploader__info">{{files.length}}/1</view>
+          <view class="weui-uploader__info">{{startImg==''?'0':1}}/1</view>
         </view>
         <view class="weui-uploader__bd">
-          <view class="weui-uploader__files" id="uploaderFiles">
-            <block wx:for="{{files}}" wx:key="*this">
-              <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
-                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
-              </view>
-            </block>
+          <view class="weui-uploader__endImg" id="uploaderendImg">
+            <!-- <block wx:for="{{endImg}}" wx:key="*this"> -->
+            <view class="weui-uploader__file" bindtap="previewImage_startImg" id="{{startImg}}">
+              <image class="weui-uploader__img" src="{{startImg}}" mode="aspectFill" />
+            </view>
+            <!-- </block> -->
           </view>
           <view class="weui-uploader__input-box">
-            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+            <view class="weui-uploader__input" bindtap="chooseImage_startImg"></view>
           </view>
         </view>
       </view>
       <view class="weui-uploader">
         <view class="weui-uploader__hd">
           <view class="weui-uploader__title">任务结束截图</view>
-          <view class="weui-uploader__info">{{files.length}}/1</view>
+          <view class="weui-uploader__info">{{endImg==''?'0':1}}/1</view>
         </view>
         <view class="weui-uploader__bd">
-          <view class="weui-uploader__files" id="uploaderFiles">
-            <block wx:for="{{files}}" wx:key="*this">
-              <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
-                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
-              </view>
-            </block>
+          <view class="weui-uploader__endImg" id="uploaderendImg">
+            <!-- <block wx:for="{{endImg}}" wx:key="*this"> -->
+            <view class="weui-uploader__file" bindtap="previewImage_endImg" id="{{endImg}}">
+              <image class="weui-uploader__img" src="{{endImg}}" mode="aspectFill" />
+            </view>
+            <!-- </block> -->
           </view>
           <view class="weui-uploader__input-box">
-            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+            <view class="weui-uploader__input" bindtap="chooseImage_endImg"></view>
           </view>
         </view>
       </view>
     </view>
   </view>
-
   <i-button bind:click="handleClick" type="success" shape="circle" size="small" class="btn">
-    提交 </i-button>
+    提交
+  </i-button>
 </view>

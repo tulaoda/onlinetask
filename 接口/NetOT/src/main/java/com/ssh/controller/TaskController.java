@@ -55,7 +55,6 @@ public class TaskController {
     }
 
 
-    @ApiImplicitParams({})
     @RequestMapping(value = "findAllTask", method = RequestMethod.GET)
     @ResponseBody
     public Map findAllTask(int state, int page, int pageSize) {
@@ -67,6 +66,22 @@ public class TaskController {
             e.printStackTrace();
         }
         map.put("content", tasks);
+        map.put("msg", "执行成功！");
+        return map;
+    }
+
+    @RequestMapping(value = "findTaskBYTaskId", method = RequestMethod.GET)
+    @ResponseBody
+    public Map findTaskBYTaskId(Long taskId) {
+        Map map = new HashMap();
+        Task task = null;
+        try {
+            task = taskService.get(taskId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        map.put("task", task);
+        map.put("code", 200);
         map.put("msg", "执行成功！");
         return map;
     }

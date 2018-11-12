@@ -1,17 +1,15 @@
 <view class="container">
-  <i-card title="竹酒" extra="￥ 4">
-    <view slot="content">
-      韵泉竹酒它是一款有生命力的原生态健康养生酒，被誉为酒界黑马，竹酒沿用古法酿造，用现代技术将原浆酒注进竹里，与竹同长，使基酒与活竹完美融合，成酒色如同琥珀，酒质甘醇芬香浓郁，竹香四溢，具有驱风湿，疏筋活络，美容养颜等功效！是您走亲访友，朋友小聚的不二选择！招商热线 15220086930
-    </view>
+  <i-card title="{{data.name}}" extra="{{data.commission}}">
+    <view slot="content">{{data.article}}</view>
     <view slot="footer">点击复制文案即可复制文案到剪贴板</view>
   </i-card>
-  <i-button bind:click="setClipboardData" type="success" shape="circle" size="small" class="btn-copy" data-content="这是剪切板的数据">
+  <i-button bind:click="setClipboardData" type="success" shape="circle" size="small" class="btn-copy" data-content=" {{data.article}}">
     复制文案
   </i-button>
   <i-card title="图片">
     <view slot="content">
-      <block wx:for="{{imgArr}}" wx:key="*this">
-        <image src="{{item}}" bindtap="handleOpen" data-imgurl='{{item}}' />
+      <block wx:for="{{data.taskImgs}}" wx:key="*this">
+        <image src="{{item.url}}" bindtap="handleOpen" data-imgurl='{{item.url}}' />
       </block>
     </view>
     <view slot="footer">点击图片即可保存图片到手机</view>

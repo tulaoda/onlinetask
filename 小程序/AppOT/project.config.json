@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -12,7 +12,7 @@
 		"nodeModules": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.0",
+	"libVersion": "2.4.0",
 	"appid": "wx842944599fa4c887",
 	"projectname": "%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88%E8%B5%9A%E9%92%B1",
 	"isGameTourist": false,
@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -63,7 +63,7 @@
 				{
 					"id": 4,
 					"name": "图片上传",
-					"pathName": "pages/type1/index",
+					"pathName": "pages/upload_task/index",
 					"query": ""
 				},
 				{
@@ -99,7 +99,14 @@
 				{
 					"id": -1,
 					"name": "提现",
-					"pathName": "pages/encash/index"
+					"pathName": "pages/encash/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "未上传任务",
+					"pathName": "pages/task_own/index",
+					"query": ""
 				}
 			]
 		}

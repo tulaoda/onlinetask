@@ -1,4 +1,6 @@
 const config = require('./config.js')
+const utilV2 = require('./utilV2.js')
+
 function __args() {
   var setting = {};
   if (arguments.length === 1 && typeof arguments[0] !== 'string') {
@@ -23,18 +25,20 @@ function __json(method, setting) {
   setting.header = {
     'content-type': 'application/json'
   };
-  wx.request(setting);
+  wx.request(setting)
+  // let wxPromisify=utilV2.wxPromisify(wx.request())
+  // return utilV2.wxPromisify(wx.request(setting))
 }
 
 module.exports = {
   //api地址
-  getJSON: function() {
+  getJSON: function () {
     __json('GET', __args.apply(this, arguments));
   },
-  postJSON: function() {
+  postJSON: function () {
     __json('POST', __args.apply(this, arguments));
   },
-  sendTemplate: function(formId, templateData, success, fail) {
+  sendTemplate: function (formId, templateData, success, fail) {
     var app = getApp();
     this.getJSON({
       url: '/WxAppApi/sendTemplate',

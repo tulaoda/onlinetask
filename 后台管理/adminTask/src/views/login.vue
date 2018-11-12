@@ -1,19 +1,19 @@
 
 <template>
-    <div class="container">
-        <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-            <h1>OnlineTask后台管理</h1>
-            <el-form-item prop="name">
-                <el-input v-model="ruleForm.name" placeholder="账号"></el-input>
-            </el-form-item>
-            <el-form-item prop="passwd">
-                <el-input v-model="ruleForm.passwd" placeholder="密码"></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-            </el-form-item>
-        </el-form>
-    </div>
+  <div class="container">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
+      <h1>OnlineTask后台管理</h1>
+      <el-form-item prop="name">
+        <el-input v-model="ruleForm.name" placeholder="账号"></el-input>
+      </el-form-item>
+      <el-form-item prop="passwd">
+        <el-input v-model="ruleForm.passwd" placeholder="密码" type="password"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
 </template>
 
 <script>
@@ -50,8 +50,7 @@ export default {
             let user = {
               name: this.ruleForm.name,
               passwd: this.ruleForm.passwd,
-              auth:true
-
+              auth: true
             };
             this.setUser(user);
             this.$router.push({ path: "/" });
@@ -62,7 +61,7 @@ export default {
               //   type: "warning"
             });
             // location.reload();
-            this.resetForm('ruleForm');
+            this.resetForm("ruleForm");
           }
         } else {
           console.log("error submit!!");
@@ -83,8 +82,7 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
-  background: url("./../assets/login.jpg")
-    no-repeat;
+  background: url("./../assets/login.jpg") no-repeat;
   background-size: cover;
   background-position: 0 -220px;
   text-align: center;

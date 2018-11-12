@@ -19,14 +19,12 @@ const formatNumber = n => {
  * @fn 传入的函数，如wx.request、wx.download
  */
 function wxPromisify(fn) {
-  return function(obj = {}) {
+  return function (obj = {}) {
     return new Promise((resolve, reject) => {
-      obj.success = function(res) {
+      obj.success = function (res) {
         console.log(res)
         if (res.data.code == 200) {
           return resolve(res)
-        } else if (res.data.code == 40003) {
-          getOpenid()
         } else {
           wx.hideLoading();
           wx.showModal({
@@ -36,18 +34,18 @@ function wxPromisify(fn) {
           })
         }
       }
-      obj.fail = function(res) {
+      obj.fail = function (res) {
         showError()
         return reject(res)
       }
-      if(obj instanceof Function)fn(obj) //执行函数，obj为传入函数的参数
+      if (obj instanceof Function) fn(obj) //执行函数，obj为传入函数的参数
     })
   }
 }
 /**
  * 加载超时后显示网络错误提示
  */
-function racePromise(proRequest){
+function racePromise(proRequest) {
   return Promise.race([
     proRequest,
     new Promise(function (resolve, reject) {
@@ -59,7 +57,7 @@ function racePromise(proRequest){
 /**
  * 弹窗提示网络错误
  */
-function showError(){
+function showError() {
   wx.showToast({
     title: '请检查网络连接',
     icon: 'none',
@@ -68,7 +66,7 @@ function showError(){
   })
 }
 
-function getOpenid(){
+function getOpenid() {
   console.log("执行登录")
   wx.login({
     success: function (res) {

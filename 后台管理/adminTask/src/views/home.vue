@@ -6,10 +6,11 @@
     </div>
     <div class="right-main">
       <myHeader @collapseFun="handelCollapse"></myHeader>
-
-      <el-main>
-        <router-view></router-view>
-      </el-main>
+      <div class="main">
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </div>
     </div>
 
   </el-container>
@@ -23,18 +24,20 @@
   top: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden;
-  width:auto;
+  // overflow: hidden;
+  width: auto;
   display: flex;
   .left-slider {
     width: auto;
+    position: fixed;
   }
   .right-main {
     flex: 1;
     position: relative;
+    margin-left: 200px;
     .el-main {
-      height: 100%;
-      overflow: hidden;
+      // height: 100%;
+      // overflow: hidden;
     }
   }
 }

@@ -1,6 +1,6 @@
 {
-    "navigationBarTitleText": "任务大厅",
-    "usingComponents": {
-        "i-card": "../../dist/card/index"
-    }
+  "navigationBarTitleText": "未提交任务",
+  "usingComponents": {
+    "i-card": "../../dist/card/index"
+  }
 }
