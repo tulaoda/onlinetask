@@ -1,0 +1,62 @@
+{
+    "subMenu": [
+        {
+            "Key": "6dcff383-fae8-4e61-a72a-3e2abf816d71",
+            "Name": "测试",
+            "Icon": "menu-unfold",
+            "Path": "/404",
+            "Component": "",
+            "Action": [],
+            "Children": [
+                {
+                    "Key": "401f84d3-5a77-4b30-92c4-9c723ed29356",
+                    "Name": "404",
+                    "Icon": "menu-fold",
+                    "Path": "/null",
+                    "Component": "test",
+                    "Action": [],
+                    "Children": []
+                },
+                {
+                    "Key": "044267b5-60de-41d8-b697-161a2ddd33e2",
+                    "Name": "富文本",
+                    "Icon": "menu-fold",
+                    "Path": "/editer",
+                    "Component": "editer",
+                    "Action": [],
+                    "Children": []
+                }
+            ]
+        },
+        {
+            "Key": "b6cb699f-5b1e-4140-bfb3-47cba34bf18e",
+            "Name": "test",
+            "Icon": "menu-fold",
+            "Path": "/test",
+            "Component": "test",
+            "Action": [
+                {
+                    "name": "添加",
+                    "key": "insert"
+                },
+                {
+                    "name": "修改",
+                    "key": "update"
+                },
+                {
+                    "name": "删除",
+                    "key": "delete"
+                },
+                {
+                    "name": "导入",
+                    "key": "import"
+                },
+                {
+                    "name": "导出",
+                    "key": "export"
+                }
+            ],
+            "Children": []
+        }
+    ]
+}

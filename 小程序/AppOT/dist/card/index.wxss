@@ -23,8 +23,11 @@
 }
 
 .i-card-header-content {
-  flex: 1;
+  flex: 4;
   text-align: left;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
 }
 
 .i-card-header-thumb {
@@ -32,12 +35,12 @@
   width: 40px;
   height: 40px;
   position: relative;
-  margin-left: auto;
+  margin-left: 10rpx;
   margin-right: auto;
   overflow: hidden;
   background-size: cover;
   vertical-align: middle;
-  border-radius: 5rpx;
+  border-radius: 10rpx;
 }
 
 .i-card-header-title {
