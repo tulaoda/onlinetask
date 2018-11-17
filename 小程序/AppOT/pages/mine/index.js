@@ -13,7 +13,6 @@ Page({
     judgeAdmin: false
   },
   onLoad: function() {
-    this.judgeAdmin()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

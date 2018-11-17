@@ -14,7 +14,7 @@
     </view>
     <view slot="footer">点击图片即可保存图片到手机</view>
   </i-card>
-  <i-button bind:click="handleClick" type="success" shape="circle" size="small" class="btn-submit">
+  <i-button bind:click="createTask" type="success" shape="circle" size="small" class="btn-submit" data-taskId="{{data.taskId}}">
     领取任务
   </i-button>
 </view>

@@ -32,3 +32,9 @@
 .task_detail {
   margin-top: 30rpx;
 }
+
+
+image {
+  width: 320px;
+  max-height:240px;
+}

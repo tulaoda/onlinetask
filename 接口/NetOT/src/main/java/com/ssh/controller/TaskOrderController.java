@@ -5,11 +5,10 @@ import com.ssh.entity.TaskOrder;
 import com.ssh.service.TaskOrderService;
 import com.ssh.service.TaskService;
 import com.ssh.utils.CreateOrderID;
+import com.ssh.utils.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -69,10 +68,12 @@ public class TaskOrderController {
         return map;
     }
 
-    //查询当前用户的所有任务记录
+    //查询当前用户的所有任务记录通过状态
     @RequestMapping(value = "taskOrderByOpenId", method = RequestMethod.GET)
     @ResponseBody
-    public Map findAllTask(String openId, int state, int page, int pageSize) {
+    public Map findAllTask(String openId,
+                           @RequestParam(value = "state", required = false, defaultValue = "") Integer state,
+                           Integer page, Integer pageSize) {
         Map map = new HashMap();
         List<TaskOrder> taskOrders = null;
         try {
@@ -83,6 +84,52 @@ public class TaskOrderController {
         map.put("content", taskOrders);
         map.put("msg", "执行成功！");
         return map;
+    }
+
+    //查询单个任务记录
+    @RequestMapping(value = "taskOrderByOrderId", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseData taskOrderByOrderId(Long taskOrderId) {
+        ResponseData responseData = ResponseData.ok();
+        TaskOrder taskOrder = null;
+        try {
+            taskOrder = taskOrderService.get(taskOrderId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        responseData.putDataValue("taskOrder", taskOrder);
+        return responseData;
+    }
+
+
+    //查询当前用户的所有任务记录
+    @RequestMapping(value = "taskOrderByOpenIdNoState", method = RequestMethod.GET)
+    @ResponseBody
+    public Map taskOrderByOpenIdNoState(String openId, Integer page, Integer pageSize) {
+        Map map = new HashMap();
+        List<TaskOrder> taskOrders = null;
+        try {
+            taskOrders = taskOrderService.taskOrderByOpenIdNoState(openId, page, pageSize);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        map.put("content", taskOrders);
+        map.put("msg", "执行成功！");
+        return map;
+    }
+
+
+    //上传任务图片
+    @RequestMapping(value = "addOrderImg", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseData addOrderImg(@RequestBody TaskOrder taskOrder1) {
+        ResponseData responseData = ResponseData.ok();
+        TaskOrder taskOrder = taskOrderService.get(taskOrder1.getTaskOrderId());
+        taskOrder.setStartImg(taskOrder1.getStartImg());
+        taskOrder.setEndImg(taskOrder1.getEndImg());
+        taskOrder.setState(1);
+        taskOrderService.saveOrUpdate(taskOrder);
+        return responseData;
     }
 
 

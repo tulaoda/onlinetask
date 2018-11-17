@@ -53,4 +53,9 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> findAllTask(int state, int page, int pageSize) {
         return taskDao.findAllTask(state, page, pageSize);
     }
+
+    @Override
+    public List<Task> findAllTaskNoState(int page, int pageSize) {
+        return taskDao.findAllTaskNoState(page, pageSize);
+    }
 }

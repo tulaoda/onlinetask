@@ -26,6 +26,8 @@
     </el-table-column>
     <el-table-column label="微信号" prop="wechat">
     </el-table-column>
+    <el-table-column label="余额" prop="balance">
+    </el-table-column>
   </el-table>
 </template>
 

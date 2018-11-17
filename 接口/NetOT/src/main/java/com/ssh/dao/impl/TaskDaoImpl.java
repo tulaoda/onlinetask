@@ -20,7 +20,7 @@ public class TaskDaoImpl implements TaskDao {
     }
 
     public Task load(Long id) {
-        return null;
+        return (Task) getCurrentSession().load(Task.class, id);
     }
 
     public Task get(Long id) {
@@ -46,7 +46,7 @@ public class TaskDaoImpl implements TaskDao {
     }
 
     public void delete(Long id) {
-        Task task = load(id);
+        Task task = get(id);
         getCurrentSession().delete(task);
     }
 
@@ -54,13 +54,19 @@ public class TaskDaoImpl implements TaskDao {
 
     }
 
-    @Override
     public List<Task> findAllTask(int state, int page, int pageSize) {
+//        select * from t_task where taskId not in (select taskId from t_taskOrder where openId='oHojD5Fw8TwnkceMMNjxqwLrw2nQ');
 //        String hql = "from Task where state=? order by taskId desc";
-        String hql = "from Task order by taskId desc";
-
-        return getCurrentSession().createQuery(hql).
+        String hql = "from Task t where t.taskId not in (Select o.task from TaskOrder o where openId=?)";
+        return getCurrentSession().createQuery(hql).setString(0, "oHojD5Fw8TwnkceMMNjxqwLrw2nQ").
                 setFirstResult((page - 1) * pageSize)
+                .setMaxResults(pageSize).list();
+    }
+
+    @Override
+    public List<Task> findAllTaskNoState(int page, int pageSize) {
+        String hql = "from Task order by taskId desc";
+        return getCurrentSession().createQuery(hql).setFirstResult((page - 1) * pageSize)
                 .setMaxResults(pageSize).list();
     }
 }

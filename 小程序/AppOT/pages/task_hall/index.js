@@ -7,40 +7,41 @@ Page({
    */
   data: {
     current: 2,
-    params: {
-      page: 1,
-      pageSize: 10
-    },
+    page: 1,
+    pageSize: 5,
     data: []
   },
 
 
-  findAllTask: function (type) {
+  findAllTask: function (message) {
     var that = this;
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      duration: 1000
+    wx.showLoading({
+      title: message,
     })
-    var that = this
     SERVER.getJSON('/task/findAllTask', {
       'openId': wx.getStorageSync('openid'),
       'state': 0,
-      'page': this.data.params.page,
-      'pageSize': this.data.params.pageSize
+      'page': this.data.page,
+      'pageSize': this.data.pageSize
     }, function (res) {
-      console.log(res)
-      wx.hideToast()
-      that.setData({
-        data: that.data.data.concat(res.data.content)
-      })
+      if (res) {
+        wx.hideLoading();
+        // complete
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
+        that.setData({
+          data: that.data.data.concat(res.data.content),
+          page: that.data.page + 1
+        })
+      }
+
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    this.findAllTask()
+    this.findAllTask('数据加载中')
   },
 
   /**
@@ -75,14 +76,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.data.page = 1;
+    this.findAllTask('正在刷新数据')
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.data.data = []
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.findAllTask('加载更多数据')
   },
 
   /**

@@ -1,7 +1,7 @@
 <view class="page">
   <view>
     <block wx:for="{{data}}" wx:key="*this">
-      <navigator url="../upload_task/index" class="card-demo" hover-class="none" hover-stop-propagation="false">
+      <navigator url="../upload_task/index?taskOrderId={{item.taskOrderId}}" class="card-demo" hover-class="none" hover-stop-propagation="false">
         <i-card title="{{item.task.taskId}}" extra="￥ {{item.task.commission}}" thumb="{{item.task.taskImgs[0].url}}" class="card-demo">
           <view slot="content" class="task_content">{{item.task.article}}</view>
           <view slot="footer">{{item.task.createTime}}</view>

@@ -76,6 +76,28 @@ Page({
       }
     })
   },
+
+
+  //领取任务
+
+  createTask(e) {
+    let taskId = e.currentTarget.dataset.taskid;
+    SERVER.getJSON('/taskOrder/createTaskOrder', {
+      taskId: taskId,
+      openId: wx.getStorageSync('openid')
+    }, function (res) {
+      if (res.data.code == 200) {
+        wx.showToast({
+          title: '领取成功',
+          icon: 'success',
+          duration: 1000
+        })
+      }
+      console.log(res)
+
+    })
+
+  },
   findTaskBYTaskId: function (option) {
     var that = this;
     wx.showToast({

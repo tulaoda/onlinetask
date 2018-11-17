@@ -2,5 +2,6 @@
   "navigationBarTitleText": "未提交任务",
   "usingComponents": {
     "i-card": "../../dist/card/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

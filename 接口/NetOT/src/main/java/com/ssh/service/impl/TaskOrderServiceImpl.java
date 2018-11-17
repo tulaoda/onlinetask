@@ -28,13 +28,18 @@ public class TaskOrderServiceImpl implements TaskOrderService {
     }
 
     @Override
+    public List<TaskOrder> taskOrderByOpenIdNoState(String openId, int page, int pageSize) {
+        return taskOrderDao.taskOrderByOpenIdNoState(openId, page, pageSize);
+    }
+
+    @Override
     public TaskOrder load(Long id) {
-        return null;
+        return taskOrderDao.load(id);
     }
 
     @Override
     public TaskOrder get(Long id) {
-        return null;
+        return taskOrderDao.get(id);
     }
 
     @Override
@@ -44,7 +49,6 @@ public class TaskOrderServiceImpl implements TaskOrderService {
 
     @Override
     public void persist(TaskOrder entity) {
-
     }
 
     @Override
@@ -54,7 +58,7 @@ public class TaskOrderServiceImpl implements TaskOrderService {
 
     @Override
     public void saveOrUpdate(TaskOrder entity) {
-
+        taskOrderDao.saveOrUpdate(entity);
     }
 
     @Override

@@ -38,12 +38,12 @@
       </el-table-column>
       <el-table-column label="创建时间" prop="createTime">
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="操作" width="200px">
         <template slot-scope="scope">
           <el-button size="mini">
             <router-link :to='{name:"taskDetail", params:{ id:scope.row.taskId } }'> 查看任务详情</router-link>
           </el-button>
-          <!-- <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button> -->
+          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, tableData5,scope.row.taskId)">删除</el-button>
         </template>
       </el-table-column>
 
@@ -101,9 +101,9 @@ export default {
     findAllTask(state) {
       let that = this;
       this.$ajax
-        .get("/task/findAllTask", {
+        .get("/task/findAllTaskNoState", {
           params: {
-            state: "1",
+            // state: "1",
             page: "1",
             pageSize: "100"
           }
@@ -117,6 +117,37 @@ export default {
     DialogVisible(item) {
       this.tmpImg = item;
       this.centerDialogVisible = true;
+    },
+    handleDelete(index, row, taskId) {
+      console.log(taskId);
+      let that = this;
+      this.$ajax
+        .get("/task/deleteTask", {
+          params: {
+            taskId: taskId
+          }
+        })
+        .then(function(res) {
+          if (res.data.code == 200) {
+            row.splice(index, 1); //删掉该行
+            const h = that.$createElement;
+            that.$notify.success({
+              title: "提示",
+              message: h("i", { style: "color: teal" }, "任务删除成功")
+            });
+            // location.reload();
+          } else {
+            const h = that.$createElement;
+            that.$notify.success({
+              title: "提示",
+              message: h(
+                "i",
+                { style: "color: teal" },
+                "任务已经领取，不能删除"
+              )
+            });
+          }
+        });
     }
   }
 };

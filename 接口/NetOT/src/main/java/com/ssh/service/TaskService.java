@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TaskService extends DomainDao<Task, Long> {
     List<Task> findAllTask(int state, int page, int pageSize);
+
+    List<Task> findAllTaskNoState(int page, int pageSize);
 }

@@ -95,5 +95,7 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.3" level="project" />
     <orderEntry type="library" name="Maven: repository.org.apache.jackrabbit:jackrabbit-spi-commons:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: net.coobird:thumbnailator:0.4.8" level="project" />
+    <orderEntry type="library" name="Maven: com.auth0:java-jwt:2.2.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.28" level="project" />
   </component>
 </module>

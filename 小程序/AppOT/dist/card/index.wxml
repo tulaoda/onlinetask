@@ -2,7 +2,10 @@
     <view class="i-class i-card-header">
         <view class="i-card-header-content">
             <image class="i-card-header-thumb" src="{{ thumb }}" mode="aspectFit" wx:if="{{ thumb }}" />
+            <view class='content-title'>
             {{ title }}
+            
+            </view>
         </view>
         <view class="i-card-header-extra" wx:if="{{ extra }}">{{ extra }}</view>
     </view>

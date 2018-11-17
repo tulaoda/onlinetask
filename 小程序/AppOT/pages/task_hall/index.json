@@ -1,6 +1,7 @@
 {
-    "navigationBarTitleText": "任务大厅",
-    "usingComponents": {
-        "i-card": "../../dist/card/index"
-    }
+  "navigationBarTitleText": "任务大厅",
+  "usingComponents": {
+    "i-card": "../../dist/card/index"
+  },
+  "enablePullDownRefresh": true
 }

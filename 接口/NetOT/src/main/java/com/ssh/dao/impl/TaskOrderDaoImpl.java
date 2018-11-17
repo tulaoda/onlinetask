@@ -41,7 +41,7 @@ public class TaskOrderDaoImpl implements TaskOrderDao {
     }
 
     public void saveOrUpdate(TaskOrder entity) {
-
+        getCurrentSession().saveOrUpdate(entity);
     }
 
     public void delete(Long id) {
@@ -64,10 +64,18 @@ public class TaskOrderDaoImpl implements TaskOrderDao {
 
     @Override
     public List<TaskOrder> taskOrderByOpenId(String openId, int state, int page, int pageSize) {
-//        String hql = "from TaskOrder order by taskOrderId desc";
         String hql = "from TaskOrder where openId=? and state=? order by taskOrderId desc";
 
         return getCurrentSession().createQuery(hql).setString(0, openId).setInteger(1, state).
+                setFirstResult((page - 1) * pageSize)
+                .setMaxResults(pageSize).list();
+    }
+
+    @Override
+    public List<TaskOrder> taskOrderByOpenIdNoState(String openId, int page, int pageSize) {
+        String hql = "from TaskOrder where openId=? order by taskOrderId desc";
+
+        return getCurrentSession().createQuery(hql).setString(0, openId).
                 setFirstResult((page - 1) * pageSize)
                 .setMaxResults(pageSize).list();
     }

@@ -7,7 +7,8 @@ Page({
     startImgUrl: '', //开始地址
     endImg: '', //任务结束图片
     endImgUrl: '', //结束地址
-    upImgUrl: 'https://www.tulaoda.top/api/NetOT/upload'
+    upImgUrl: 'https://www.tulaoda.top/api/NetOT/upload',
+    taskOrderId: ''
   },
   chooseImage_startImg: function (e) {
     var that = this
@@ -114,7 +115,7 @@ Page({
 
 
   },
-  handleClick: function (e) {
+  handleClick: function (option) {
     let startImgUrl = this.data.startImgUrl;
     let endImgUrl = this.data.endImgUrl;
 
@@ -126,6 +127,36 @@ Page({
       })
       return false;
     }
-  }
 
+    SERVER.postJSON("/taskOrder/addOrderImg", {
+      taskOrderId: this.data.taskOrderId,
+      startImg: startImgUrl,
+      endImg: endImgUrl
+    }, function (res) {
+      if (res.code = "200") {
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          showCancel: false
+        })
+        setTimeout(function () {
+          wx.switchTab({
+            url: '../index/index'
+          })
+        }, 1000)
+      } else {
+        wx.showToast({
+          title: '请检查网络连接',
+          icon: 'none',
+          duration: 1000,
+          mask: true,
+        })
+      }
+    })
+  },
+  onLoad: function (option) {
+    this.setData({
+      taskOrderId: option.taskOrderId
+    })
+  }
 })
