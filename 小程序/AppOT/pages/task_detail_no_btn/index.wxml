@@ -52,7 +52,11 @@
     </i-collapse-item>
   </i-collapse>
   <navigator url="../upload_task/index?taskOrderId={{data.taskOrderId}}" class="btn-submit">
-    <i-button type="success" shape="circle" size="small" class="btn-submit">修改上传图片</i-button>
+    <i-button type="success" shape="circle" size="small" class="btn-submit">
+      {{data.startImg==undefined?"上传图片":"修改上传图片"}}
+
+
+    </i-button>
   </navigator>
 </view>
 <!-- 弹出框 -->

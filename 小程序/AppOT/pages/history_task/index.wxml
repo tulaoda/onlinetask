@@ -4,7 +4,7 @@
     <view>没有数据</view>
   </view>
 
-  <block wx:for="{{data}}" wx:key="*this">
+  <block wx:for="{{data}}" wx:key="*this.index">
     <navigator url="../task_detail_no_btn/index?taskOrderId={{item.taskOrderId}}" class="card-demo" hover-class="none" hover-stop-propagation="false">
       <i-card title="{{item.task.name}}" extra="{{stateMsg[item.state]}}" class="card-demo">
         <!-- <view slot="content" class="task_content">劲炫撒旦教卡里的杰拉德加拉三等奖阿斯利康的骄傲时了解到大家</view> -->
