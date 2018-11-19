@@ -8,10 +8,6 @@ import javax.persistence.*;
 @Table(name = "t_user")
 public class User {
     @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private Long id;
-
     @Column(name = "openid")
     private String openid;
 
@@ -50,13 +46,6 @@ public class User {
         this.balance = balance;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getOpenid() {
         return openid;

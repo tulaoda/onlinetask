@@ -35,22 +35,23 @@ public class TokenInterceptor implements HandlerInterceptor{
             User user = Jwt.unsign(token, User.class);
             String loginId = request.getParameter("loginId");
             //解密token后的loginId与用户传来的loginId不一致，一般都是token过期
-            if(null != loginId && null != user) {
-                if(Integer.parseInt(loginId) == user.getId()) {
-                    return true;
-                }
-                else{
-                    responseData = ResponseData.forbidden();
-                    responseMessage(response, response.getWriter(), responseData);
-                    return false;
-                }
-            }
-            else
-            {
-                responseData = ResponseData.forbidden();
-                responseMessage(response, response.getWriter(), responseData);
-                return false;
-            }
+//            if(null != loginId && null != user) {
+//                if(Integer.parseInt(loginId) == user.getId()) {
+//                    return true;
+//                }
+//                else{
+//                    responseData = ResponseData.forbidden();
+//                    responseMessage(response, response.getWriter(), responseData);
+//                    return false;
+//                }
+//            }
+//            else
+//            {
+//                responseData = ResponseData.forbidden();
+//                responseMessage(response, response.getWriter(), responseData);
+//                return false;
+//            }
+            return false;
         }
         else
         {
