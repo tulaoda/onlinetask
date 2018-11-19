@@ -69,4 +69,10 @@ public class TaskDaoImpl implements TaskDao {
         return getCurrentSession().createQuery(hql).setFirstResult((page - 1) * pageSize)
                 .setMaxResults(pageSize).list();
     }
+
+    @Override
+    public Long totalCount() {
+        String hql = "select count(*) from Task";
+        return (Long) getCurrentSession().createQuery(hql).uniqueResult();
+    }
 }

@@ -33,6 +33,11 @@ public class TaskOrderServiceImpl implements TaskOrderService {
     }
 
     @Override
+    public Long totalCount() {
+        return taskOrderDao.totalCount();
+    }
+
+    @Override
     public TaskOrder load(Long id) {
         return taskOrderDao.load(id);
     }

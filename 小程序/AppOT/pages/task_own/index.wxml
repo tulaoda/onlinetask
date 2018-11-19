@@ -1,8 +1,13 @@
-<view class="page">
+<view>
+  <view hidden="{{data==''?false:true}}" class='nodata-content'>
+    <image src="../../images/nodata.png" class='nodata-img'></image>
+    <view>没有数据</view>
+  </view>
+
   <view>
     <block wx:for="{{data}}" wx:key="*this">
       <navigator url="../upload_task/index?taskOrderId={{item.taskOrderId}}" class="card-demo" hover-class="none" hover-stop-propagation="false">
-        <i-card title="{{item.task.taskId}}" extra="￥ {{item.task.commission}}" thumb="{{item.task.taskImgs[0].url}}" class="card-demo">
+        <i-card title="{{item.task.name}}" extra="￥ {{item.task.commission}}" class="card-demo">
           <view slot="content" class="task_content">{{item.task.article}}</view>
           <view slot="footer">{{item.task.createTime}}</view>
         </i-card>

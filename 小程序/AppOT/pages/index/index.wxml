@@ -7,7 +7,7 @@
       </swiper-item>
     </block>
   </swiper>
-  <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+  <!-- <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
     <block wx:for="{{msgList}}"  wx:key="{{msgList.index}}">
       <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
         <swiper-item>
@@ -15,7 +15,7 @@
         </swiper-item>
       </navigator>
     </block>
-  </swiper>
+  </swiper> -->
   <view class="content">
     <view class="weui-grids">
       <block>
@@ -25,7 +25,7 @@
         </navigator>
       </block>
       <block>
-        <navigator url="../task_hall/index" class="weui-grid" hover-class="weui-grid_active">
+        <navigator url="../taskHall/index" class="weui-grid" hover-class="weui-grid_active">
           <image class="weui-grid__icon" src="../../images/grid_2.png" />
           <view class="weui-grid__label">任务大厅</view>
         </navigator>

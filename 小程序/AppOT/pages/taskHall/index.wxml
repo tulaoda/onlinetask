@@ -1,11 +1,12 @@
 <view class="page">
-  <!-- <view hidden="{{data==[]?false:true}}">
-    <image src="../../images/nodata.jpg"></image>
-  </view> -->
+  <view wx:if="{{data==''?true:false}}" class='nodata-content'>
+    <!-- <image src="../../images/nodata.png" class='nodata-img'></image> -->
+    <view>没有数据</view>
+  </view>
   <view>
     <block wx:for="{{data}}" wx:key="*this.index">
       <navigator url="../task_detail/index?taskId={{item.taskId}}" class="card-demo" hover-class="none" hover-stop-propagation="false">
-        <i-card title="{{item.taskId}}" extra="￥ {{item.commission}}" thumb="{{item.taskImgs[0].url}}" class="card-demo">
+        <i-card title="{{item.name}}" extra="￥ {{item.commission}}"  class="card-demo">
           <view slot="content" class="task_content">{{item.article}}</view>
           <view slot="footer">{{item.createTime}}</view>
         </i-card>

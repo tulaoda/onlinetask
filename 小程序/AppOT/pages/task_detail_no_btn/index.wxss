@@ -33,8 +33,12 @@
   margin-top: 30rpx;
 }
 
-
 image {
   width: 320px;
-  max-height:240px;
+  height: 320px;
+}
+
+.upload_img {
+  width: 320px;
+  height: 600px;
 }

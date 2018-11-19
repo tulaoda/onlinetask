@@ -58,12 +58,15 @@ public class TaskOrderController {
     public Map findAllTask(Long taskID, int page, int pageSize) {
         Map map = new HashMap();
         List<TaskOrder> taskOrders = null;
+        Long total = null;
         try {
             taskOrders = taskOrderService.findAllTaskOrder(taskID, page, pageSize);
+            total = taskOrderService.totalCount();
         } catch (Exception e) {
             e.printStackTrace();
         }
         map.put("content", taskOrders);
+        map.put("total", total);
         map.put("msg", "执行成功！");
         return map;
     }
@@ -128,6 +131,19 @@ public class TaskOrderController {
         taskOrder.setStartImg(taskOrder1.getStartImg());
         taskOrder.setEndImg(taskOrder1.getEndImg());
         taskOrder.setState(1);
+        taskOrderService.saveOrUpdate(taskOrder);
+        return responseData;
+    }
+
+
+    //更新任务完成状态
+    @RequestMapping(value = "updateOrderState", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseData updateOrderState(@RequestBody TaskOrder taskOrder1) {
+        ResponseData responseData = ResponseData.ok();
+        TaskOrder taskOrder = taskOrderService.get(taskOrder1.getTaskOrderId());
+        taskOrder.setState(taskOrder1.getState());
+        taskOrder.setRemarks(taskOrder1.getRemarks());
         taskOrderService.saveOrUpdate(taskOrder);
         return responseData;
     }

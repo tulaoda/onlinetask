@@ -10,10 +10,6 @@ Page({
     visible: false,
     data: '',
     tmpurl: '', // 图片临时存放
-    imgArr: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541147283742&di=fa7c6e1063a2e6a151a3148068c72fdf&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180318%2F6c7b1e4e835a4c6f94a29d4eeff77254.jpeg',
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541147283742&di=fa7c6e1063a2e6a151a3148068c72fdf&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180318%2F6c7b1e4e835a4c6f94a29d4eeff77254.jpeg',
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541147283742&di=fa7c6e1063a2e6a151a3148068c72fdf&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180318%2F6c7b1e4e835a4c6f94a29d4eeff77254.jpeg'
-    ]
   },
 
   // 弹出对话框
@@ -38,25 +34,25 @@ Page({
     })
   },
 
-  saveImgToPhotosAlbumTap: function (e) {
+  saveImgToPhotosAlbumTap: function(e) {
     var that = this
     console.log(this)
     wx.downloadFile({
       url: that.data.tmpurl,
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
-          success: function (res) {
+          success: function(res) {
             console.log(res)
           },
-          fail: function (res) {
+          fail: function(res) {
             console.log(res)
             console.log('fail')
           }
         })
       },
-      fail: function () {
+      fail: function() {
         console.log('fail')
       }
     })
@@ -85,20 +81,26 @@ Page({
     SERVER.getJSON('/taskOrder/createTaskOrder', {
       taskId: taskId,
       openId: wx.getStorageSync('openid')
-    }, function (res) {
+    }, function(res) {
       if (res.data.code == 200) {
+        setTimeout(function() {
+          wx.switchTab({
+            url: '../index/index'
+          })
+        }, 1000)
         wx.showToast({
           title: '领取成功',
           icon: 'success',
           duration: 1000
         })
+
       }
       console.log(res)
 
     })
 
   },
-  findTaskBYTaskId: function (option) {
+  findTaskBYTaskId: function(option) {
     var that = this;
     wx.showToast({
       title: '加载中',
@@ -108,7 +110,7 @@ Page({
     var that = this
     SERVER.getJSON('/task/findTaskBYTaskId', {
       'taskId': option.taskId,
-    }, function (res) {
+    }, function(res) {
       console.log(res)
       wx.hideToast()
       that.setData({
@@ -119,7 +121,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (option) {
+  onLoad: function(option) {
     this.findTaskBYTaskId(option);
 
   },
@@ -127,49 +129,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

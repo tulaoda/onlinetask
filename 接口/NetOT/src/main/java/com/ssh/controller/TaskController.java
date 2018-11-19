@@ -118,12 +118,15 @@ public class TaskController {
     public Map findAllTaskNoState(int page, int pageSize) {
         Map map = new HashMap();
         List<Task> tasks = null;
+        Long total = null;
         try {
             tasks = taskService.findAllTaskNoState(page, pageSize);
+            total = taskService.totalCount();
         } catch (Exception e) {
             e.printStackTrace();
         }
         map.put("content", tasks);
+        map.put("total", total);
         map.put("msg", "执行成功！");
         return map;
     }

@@ -25,7 +25,7 @@
 }
 
 .footer {
-  margin-top: 30rpx;
+  margin-top: 50rpx;
   height: 210rpx;
   width: 200rpx;
 }

@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/mine/index",
     "pages/task_detail/index",
-    "pages/task_hall/index",
+    "pages/taskHall/index",
     "pages/upload_task/index",
     "pages/task_own/index",
     "pages/history_task/index",
@@ -16,7 +16,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#e9e9e9",
     "navigationBarTitleText": "demo",
     "navigationBarTextStyle": "black"
   },

@@ -1,7 +1,6 @@
 <template>
   <div>
-
-    <el-table :data="tableData5">
+    <el-table :data="tableData5" class="table-content" border>
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
@@ -41,16 +40,22 @@
       <el-table-column label="操作" width="200px">
         <template slot-scope="scope">
           <el-button size="mini">
-            <router-link :to='{name:"taskDetail", params:{ id:scope.row.taskId } }'> 查看任务详情</router-link>
+            <router-link :to='{name:"taskDetail", params:{ id:scope.row.taskId } }'> 查看领取详情</router-link>
           </el-button>
           <el-button size="mini" type="danger" @click="handleDelete(scope.$index, tableData5,scope.row.taskId)">删除</el-button>
         </template>
       </el-table-column>
 
     </el-table>
+    <div class="block">
+      <el-pagination background layout="prev, pager, next" :page-size="8" :total="total" @current-change="handleCurrentChange">
+      </el-pagination>
+    </div>
     <el-dialog title="" :visible.sync="centerDialogVisible" width="50%" center>
       <img :src="tmpImg" class="dialogImg" /></el-dialog>
+
   </div>
+
 </template>
 
 <style lang="scss" scoped>
@@ -66,6 +71,9 @@
   .el-form-item {
     margin-bottom: 0;
   }
+}
+.table-content {
+  min-height: 620px;
 }
 img {
   width: 100px;
@@ -90,33 +98,39 @@ export default {
     return {
       centerDialogVisible: false,
       tableData5: [],
-      tmpImg: ""
+      tmpImg: "",
+      total: 0
     };
   },
   created() {
-    this.findAllTask();
+    this.findAllTask(1);
   },
 
   methods: {
-    findAllTask(state) {
+    findAllTask(page) {
       let that = this;
       this.$ajax
         .get("/task/findAllTaskNoState", {
           params: {
             // state: "1",
-            page: "1",
-            pageSize: "100"
+            page: page,
+            pageSize: "8"
           }
         })
         .then(function(res) {
           console.log(res.data);
           console.log(res.data.content);
           that.tableData5 = res.data.content;
+          that.total = res.data.total;
         });
     },
     DialogVisible(item) {
       this.tmpImg = item;
       this.centerDialogVisible = true;
+    },
+    handleCurrentChange(val) {
+      console.log(val);
+      this.findAllTask(val);
     },
     handleDelete(index, row, taskId) {
       console.log(taskId);

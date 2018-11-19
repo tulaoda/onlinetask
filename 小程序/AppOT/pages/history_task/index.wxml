@@ -1,11 +1,16 @@
 <view class="page">
+  <view wx:if="{{data==''?true:false}}" class='nodata-content'>
+    <image src="../../images/nodata.png" class='nodata-img'></image>
+    <view>没有数据</view>
+  </view>
+
   <block wx:for="{{data}}" wx:key="*this">
     <navigator url="../task_detail_no_btn/index?taskOrderId={{item.taskOrderId}}" class="card-demo" hover-class="none" hover-stop-propagation="false">
-      <i-card title="{{item.task.taskId}}" extra="{{stateMsg[item.state]}}" thumb="{{item.task.taskImgs[0].url}}" class="card-demo">
+      <i-card title="{{item.task.name}}" extra="{{stateMsg[item.state]}}" class="card-demo">
         <!-- <view slot="content" class="task_content">劲炫撒旦教卡里的杰拉德加拉三等奖阿斯利康的骄傲时了解到大家</view> -->
         <view slot="footer" class="footer-items" hover-class="none" hover-stop-propagation="false">
           <view slot="footer" class="footer-item">{{item.task.createTime}}</view>
-          <view slot="footer" class="footer-item task_state">{{item.task.commission}}</view>
+          <view slot="footer" class="footer-item task_state">￥{{item.task.commission}}</view>
         </view>
       </i-card>
     </navigator>

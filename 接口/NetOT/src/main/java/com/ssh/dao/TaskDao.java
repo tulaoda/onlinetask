@@ -10,4 +10,5 @@ public interface TaskDao extends DomainDao<Task, Long> {
 
     List<Task> findAllTaskNoState(int page, int pageSize);
 
+    Long totalCount();
 }

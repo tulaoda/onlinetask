@@ -75,7 +75,7 @@
 				{
 					"id": -1,
 					"name": "任务大厅",
-					"pathName": "pages/task_hall/index",
+					"pathName": "pages/taskHall/index",
 					"query": ""
 				},
 				{

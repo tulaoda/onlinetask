@@ -11,4 +11,6 @@ public interface TaskOrderDao extends DomainDao<TaskOrder, Long> {
     List<TaskOrder> taskOrderByOpenId(String openId, int state, int page, int pageSize);
 
     List<TaskOrder> taskOrderByOpenIdNoState(String openId, int page, int pageSize);
+
+    Long totalCount();
 }

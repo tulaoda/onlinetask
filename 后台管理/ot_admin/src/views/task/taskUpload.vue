@@ -52,7 +52,7 @@ export default {
       rules: {
         name: [
           { required: true, message: "请输入任务名称", trigger: "blur" },
-          { min: 2, max: 7, message: "长度在 2 到 7 个字符", trigger: "blur" }
+          { min: 2, max: 10, message: "长度在 2 到 10 个字符", trigger: "blur" }
         ],
         commission: [
           { required: true, message: "请输入任务佣金", trigger: "blur" },
@@ -62,8 +62,8 @@ export default {
           { required: true, message: "请输入文案", trigger: "blur" },
           {
             min: 3,
-            max: 200,
-            message: "长度在 3 到 200 个字符",
+            max: 500,
+            message: "长度在 3 到 500 个字符",
             trigger: "blur"
           }
         ],
@@ -143,6 +143,7 @@ export default {
     handleSuccess(file, fileList) {
       console.log(file.url);
       this.form.taskImgs.push(file.url);
+      this.$message("图片上传成功");
       console.log(this.form.taskImgs);
     }
   }

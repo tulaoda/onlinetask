@@ -15,17 +15,21 @@
       </i-step>
       <i-step icon="warning">
         <view slot="title">审核失败</view>
-        <!-- <view slot="content">未提交正确信息</view> -->
+        <view hidden="{{data.remarks==null?true:false}}" slot="content">{{data.remarks}}</view>
       </i-step>
     </i-steps>
   </view>
   <!-- <view style="margin: 16px;text-align:center;"></view> -->
-  <i-card title="提交任务截图信息">
-    <view slot="content" hidden="{{data.startImg==undefined?true:false}}">
-      <image src="{{data.startImg}}" bindtap="handleOpen" data-imgurl='{{item.startImg}}' />
-      <image src="{{data.endImg}}" bindtap="handleOpen" data-imgurl='{{item.endImg}}' />
-    </view>
-  </i-card>
+  <view hidden="{{data.startImg==undefined?true:false}}">
+    <i-card title="提交任务截图信息">
+      <view slot="content">
+        <image class='upload_img' src="{{data.startImg}}" bindtap="handleOpen" data-imgurl='{{item.startImg}}' />
+        <image class='upload_img' src="{{data.endImg}}" bindtap="handleOpen" data-imgurl='{{item.endImg}}' />
+      </view>
+    </i-card>
+
+  </view>
+
   <i-collapse class="task_detail">
     <i-collapse-item title="任务详情" name="name1">
       <view slot="content">

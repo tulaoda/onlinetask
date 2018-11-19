@@ -5,7 +5,6 @@
 
 .i-card-header-extra {
   font-weight: 600;
-
 }
 
 .page {
@@ -20,3 +19,4 @@
   font-weight: 600;
   font-size: 34rpx;
 }
+

@@ -79,4 +79,10 @@ public class TaskOrderDaoImpl implements TaskOrderDao {
                 setFirstResult((page - 1) * pageSize)
                 .setMaxResults(pageSize).list();
     }
+
+    @Override
+    public Long totalCount() {
+        String hql = "select count(*) from TaskOrder";
+        return (Long) getCurrentSession().createQuery(hql).uniqueResult();
+    }
 }
