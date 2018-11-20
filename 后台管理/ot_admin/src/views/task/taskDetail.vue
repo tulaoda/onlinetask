@@ -17,7 +17,7 @@
       </el-table-column>
       <el-table-column label="id" prop="taskOrderId">
       </el-table-column>
-      <el-table-column label="用户id" prop="openId">
+      <el-table-column label="用户姓名" prop="user.name">
       </el-table-column>
       <el-table-column label="备注">
         <template slot-scope="scope">

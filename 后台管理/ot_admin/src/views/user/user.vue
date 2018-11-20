@@ -9,14 +9,10 @@
           <el-form-item label="用户openId">
             <span>{{ props.row.openid }}</span>
           </el-form-item>
-        </el-form>  
+        </el-form>
       </template>
     </el-table-column>
-      <el-table-column label="ID" prop="id">
-    </el-table-column>
     <el-table-column label="姓名" prop="name">
-    </el-table-column>
-    <el-table-column label="收货人" prop="address">
     </el-table-column>
     <el-table-column label="电话" prop="telephone">
     </el-table-column>
@@ -27,6 +23,8 @@
     <el-table-column label="微信号" prop="wechat">
     </el-table-column>
     <el-table-column label="余额" prop="balance">
+    </el-table-column>
+    <el-table-column label="余额" prop="encashTotal">
     </el-table-column>
   </el-table>
 </template>

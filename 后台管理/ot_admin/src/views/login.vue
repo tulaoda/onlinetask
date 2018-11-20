@@ -53,7 +53,7 @@ export default {
               auth: true
             };
             this.setUser(user);
-            this.$router.push({ path: "/" });
+            this.$router.push({ path: "/user/user" });
           } else {
             this.$notify.info({
               title: "温馨提示",

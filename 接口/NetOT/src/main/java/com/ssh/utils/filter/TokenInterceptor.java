@@ -13,7 +13,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.ssh.utils.Jwt;
 import com.ssh.utils.ResponseData;
 
-public class TokenInterceptor implements HandlerInterceptor{
+public class TokenInterceptor implements HandlerInterceptor {
 
     public void afterCompletion(HttpServletRequest request,
                                 HttpServletResponse response, Object handler, Exception arg3)
@@ -31,7 +31,7 @@ public class TokenInterceptor implements HandlerInterceptor{
         String token = request.getParameter("token");
         ResponseData responseData = ResponseData.ok();
         //token不存在
-        if(null != token) {
+        if (null != token) {
             User user = Jwt.unsign(token, User.class);
             String loginId = request.getParameter("loginId");
             //解密token后的loginId与用户传来的loginId不一致，一般都是token过期
@@ -52,9 +52,7 @@ public class TokenInterceptor implements HandlerInterceptor{
 //                return false;
 //            }
             return false;
-        }
-        else
-        {
+        } else {
             responseData = ResponseData.forbidden();
             responseMessage(response, response.getWriter(), responseData);
             return false;

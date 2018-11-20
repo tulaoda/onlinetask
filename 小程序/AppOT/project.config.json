@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -107,6 +107,11 @@
 					"name": "未上传任务",
 					"pathName": "pages/task_own/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "提现",
+					"pathName": "pages/encash/index"
 				}
 			]
 		}

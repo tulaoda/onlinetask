@@ -5,5 +5,14 @@
   <i-button bind:click="handleClick" type="success" shape="circle" size="small" class="btn-submit">
     提现
   </i-button>
-  <!-- <view class="encash-record"></view> -->
+  <scroll-view scroll-y style="height: 450px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="encash-record">
+      <block wx:for="{{data}}" wx:key="*this.index">
+        <i-panel class="cell-panel-demo">
+          <i-cell title="{{item.money}}" label="{{item.createTime}}" value="{{item.state==0?'审核中':'审核完成'}}"></i-cell>
+        </i-panel>
+      </block>
+    </view>
+  </scroll-view>
+
 </view>

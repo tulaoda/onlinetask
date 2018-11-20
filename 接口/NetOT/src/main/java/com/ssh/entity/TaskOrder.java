@@ -19,9 +19,6 @@ public class TaskOrder implements java.io.Serializable {
     @Column(name = "taskOrderId")
     private Long taskOrderId;
 
-    @Column(name = "openId")
-    private String openId;
-
     @Column(name = "state")
     private int state;//任务状态  0->未提交 1->待审核  2->审核成功 3->审核失败
 
@@ -41,17 +38,22 @@ public class TaskOrder implements java.io.Serializable {
     @JoinColumn(name = "taskID")
     private Task task;
 
+
+    @ManyToOne()
+    @JoinColumn(name = "openID")
+    private User user;
+
     public TaskOrder() {
     }
 
-    public TaskOrder(String openId, int state, String remarks, String startImg, String endImg, String createTime, Task task) {
-        this.openId = openId;
+    public TaskOrder(int state, String remarks, String startImg, String endImg, String createTime, Task task, User user) {
         this.state = state;
         this.remarks = remarks;
         this.startImg = startImg;
         this.endImg = endImg;
         this.createTime = createTime;
         this.task = task;
+        this.user = user;
     }
 
     public Long getTaskOrderId() {
@@ -60,14 +62,6 @@ public class TaskOrder implements java.io.Serializable {
 
     public void setTaskOrderId(Long taskOrderId) {
         this.taskOrderId = taskOrderId;
-    }
-
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId;
     }
 
     public int getState() {
@@ -116,5 +110,13 @@ public class TaskOrder implements java.io.Serializable {
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

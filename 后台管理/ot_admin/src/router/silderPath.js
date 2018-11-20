@@ -6,8 +6,8 @@ import taskDetail from '@/views/task/taskDetail.vue'
 export default [
 
   {
-    path: '/setting',
-    name: 'setting',
+    path: '/user',
+    name: 'user',
     meta: {
       name: '用户管理',
       auth: false, // 这个字段以后用来验证必须登录才可以查看

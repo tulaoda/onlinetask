@@ -12,10 +12,14 @@ public class Bill {
     private String createTime;
     private int state;
 
-
     @ManyToOne()
     @JoinColumn(name = "openID")
     private User user;
+
+
+    public Bill() {
+
+    }
 
     public Bill(Double money, String createTime, int state, User user) {
         this.money = money;
@@ -23,6 +27,7 @@ public class Bill {
         this.state = state;
         this.user = user;
     }
+
 
     public Long getId() {
         return id;

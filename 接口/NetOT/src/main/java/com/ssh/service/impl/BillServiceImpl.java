@@ -3,6 +3,7 @@ package com.ssh.service.impl;
 import com.ssh.dao.BillDao;
 import com.ssh.entity.Bill;
 import com.ssh.service.BillService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Transactional
 public class BillServiceImpl implements BillService {
 
-
+    @Autowired
     private BillDao billDao;
 
     @Override
@@ -42,7 +43,7 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public Long save(Bill entity) {
-        return null;
+        return billDao.save(entity);
     }
 
     @Override

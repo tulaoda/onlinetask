@@ -61,11 +61,11 @@ public class TaskController {
 
     @RequestMapping(value = "findAllTask", method = RequestMethod.GET)
     @ResponseBody
-    public Map findAllTask(int state, int page, int pageSize) {
+    public Map findAllTask(String openId, int page, int pageSize) {
         Map map = new HashMap();
         List<Task> tasks = null;
         try {
-            tasks = taskService.findAllTask(state, page, pageSize);
+            tasks = taskService.findAllTask(openId, page, pageSize);
         } catch (Exception e) {
             e.printStackTrace();
         }

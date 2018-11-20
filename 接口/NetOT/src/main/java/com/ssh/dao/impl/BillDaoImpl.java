@@ -42,7 +42,7 @@ public class BillDaoImpl implements BillDao {
 
     @Override
     public Long save(Bill entity) {
-        return null;
+        return (Long) getCurrentSession().save(entity);
     }
 
     @Override

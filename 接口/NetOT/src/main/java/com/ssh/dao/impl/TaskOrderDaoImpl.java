@@ -64,7 +64,7 @@ public class TaskOrderDaoImpl implements TaskOrderDao {
 
     @Override
     public List<TaskOrder> taskOrderByOpenId(String openId, int state, int page, int pageSize) {
-        String hql = "from TaskOrder where openId=? and state=? order by taskOrderId desc";
+        String hql = "from TaskOrder where openID=? and state=? order by taskOrderId desc";
 
         return getCurrentSession().createQuery(hql).setString(0, openId).setInteger(1, state).
                 setFirstResult((page - 1) * pageSize)
@@ -73,7 +73,7 @@ public class TaskOrderDaoImpl implements TaskOrderDao {
 
     @Override
     public List<TaskOrder> taskOrderByOpenIdNoState(String openId, int page, int pageSize) {
-        String hql = "from TaskOrder where openId=? order by taskOrderId desc";
+        String hql = "from TaskOrder where openID=? order by taskOrderId desc";
 
         return getCurrentSession().createQuery(hql).setString(0, openId).
                 setFirstResult((page - 1) * pageSize)

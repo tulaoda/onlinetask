@@ -54,11 +54,11 @@ public class TaskDaoImpl implements TaskDao {
 
     }
 
-    public List<Task> findAllTask(int state, int page, int pageSize) {
+    public List<Task> findAllTask(String openId, int page, int pageSize) {
 //        select * from t_task where taskId not in (select taskId from t_taskOrder where openId='oHojD5Fw8TwnkceMMNjxqwLrw2nQ');
 //        String hql = "from Task where state=? order by taskId desc";
         String hql = "from Task t where t.taskId not in (Select o.task from TaskOrder o where openId=?)";
-        return getCurrentSession().createQuery(hql).setString(0, "oHojD5Fw8TwnkceMMNjxqwLrw2nQ").
+        return getCurrentSession().createQuery(hql).setString(0, openId).
                 setFirstResult((page - 1) * pageSize)
                 .setMaxResults(pageSize).list();
     }

@@ -20,7 +20,7 @@ Page({
     })
     SERVER.getJSON('/task/findAllTask', {
       'openId': wx.getStorageSync('openid'),
-      'state': 0,
+      // 'state': 0,
       'page': this.data.page,
       'pageSize': this.data.pageSize
     }, function (res) {

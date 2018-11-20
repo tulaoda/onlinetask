@@ -40,7 +40,7 @@ public class TaskOrderController {
         Map map = new HashMap();
         System.out.println(openId + "   " + taskId);
         TaskOrder taskOrder = new TaskOrder();
-        taskOrder.setOpenId(openId);
+        taskOrder.setUser(userService.getUserByOpenId(openId));
         taskOrder.setCreateTime(CreateOrderID.getCurrentTime());
         taskOrder.setState(0);
         Task task = new Task();
@@ -150,7 +150,7 @@ public class TaskOrderController {
         taskOrder.setState(taskOrder1.getState());
         taskOrder.setRemarks(taskOrder1.getRemarks());
         if (taskOrder1.getState() == 2) {
-            User user = userService.getUserByOpenId(taskOrder.getOpenId());
+            User user = taskOrder.getUser();
             user.setBalance(user.getBalance() + taskOrder.getTask().getCommission());
             userService.saveOrUpdate(user);
         }
