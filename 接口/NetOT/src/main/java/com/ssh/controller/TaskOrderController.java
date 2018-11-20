@@ -2,8 +2,10 @@ package com.ssh.controller;
 
 import com.ssh.entity.Task;
 import com.ssh.entity.TaskOrder;
+import com.ssh.entity.User;
 import com.ssh.service.TaskOrderService;
 import com.ssh.service.TaskService;
+import com.ssh.service.UserService;
 import com.ssh.utils.CreateOrderID;
 import com.ssh.utils.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class TaskOrderController {
 
     @Autowired
     private TaskService taskService;
+
+    @Autowired
+    private UserService userService;
 
     //添加任务
     @RequestMapping(value = "createTaskOrder", method = RequestMethod.GET)
@@ -144,6 +149,12 @@ public class TaskOrderController {
         TaskOrder taskOrder = taskOrderService.get(taskOrder1.getTaskOrderId());
         taskOrder.setState(taskOrder1.getState());
         taskOrder.setRemarks(taskOrder1.getRemarks());
+        if (taskOrder1.getState() == 2) {
+            User user = userService.getUserByOpenId(taskOrder.getOpenId());
+            user.setBalance(user.getBalance() + taskOrder.getTask().getCommission());
+            userService.saveOrUpdate(user);
+        }
+
         taskOrderService.saveOrUpdate(taskOrder);
         return responseData;
     }

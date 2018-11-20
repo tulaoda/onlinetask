@@ -32,10 +32,13 @@ public class User {
     @Column(name = "balance")
     private double balance;
 
+    @Column(name = "encashTotal")
+    private double encashTotal;
+
     public User() {
     }
 
-    public User(String openid, String name, String address, String telephone, String wechat, String alipay, String formId, double balance) {
+    public User(String openid, String name, String address, String telephone, String wechat, String alipay, String formId, double balance, double encashTotal) {
         this.openid = openid;
         this.name = name;
         this.address = address;
@@ -44,8 +47,8 @@ public class User {
         this.alipay = alipay;
         this.formId = formId;
         this.balance = balance;
+        this.encashTotal = encashTotal;
     }
-
 
     public String getOpenid() {
         return openid;
@@ -109,5 +112,13 @@ public class User {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public double getEncashTotal() {
+        return encashTotal;
+    }
+
+    public void setEncashTotal(double encashTotal) {
+        this.encashTotal = encashTotal;
     }
 }

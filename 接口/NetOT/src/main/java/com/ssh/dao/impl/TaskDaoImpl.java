@@ -42,7 +42,7 @@ public class TaskDaoImpl implements TaskDao {
     }
 
     public void saveOrUpdate(Task entity) {
-
+        getCurrentSession().saveOrUpdate(entity);
     }
 
     public void delete(Long id) {
