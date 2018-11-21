@@ -24,7 +24,9 @@
     </el-table-column>
     <el-table-column label="余额" prop="balance">
     </el-table-column>
-    <el-table-column label="余额" prop="encashTotal">
+    <el-table-column label="已提现金额" prop="encashTotal">
+    </el-table-column>
+    <el-table-column label="提现中余额" prop="encashing">
     </el-table-column>
   </el-table>
 </template>

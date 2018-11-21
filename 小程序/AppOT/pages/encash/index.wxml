@@ -9,7 +9,7 @@
     <view class="encash-record">
       <block wx:for="{{data}}" wx:key="*this.index">
         <i-panel class="cell-panel-demo">
-          <i-cell title="{{item.money}}" label="{{item.createTime}}" value="{{item.state==0?'审核中':'审核完成'}}"></i-cell>
+          <i-cell title="-{{item.money}}" label="{{item.createTime}}" value="{{item.state==0?'提现中':'提现完成'}}"></i-cell>
         </i-panel>
       </block>
     </view>

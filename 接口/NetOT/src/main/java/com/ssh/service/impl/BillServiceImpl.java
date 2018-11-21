@@ -27,6 +27,11 @@ public class BillServiceImpl implements BillService {
     }
 
     @Override
+    public Long totalCount(Integer state) {
+        return billDao.totalCount(state);
+    }
+
+    @Override
     public Bill load(Long id) {
         return billDao.load(id);
     }
@@ -53,7 +58,7 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public void saveOrUpdate(Bill entity) {
-
+        billDao.saveOrUpdate(entity);
     }
 
     @Override

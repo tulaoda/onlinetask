@@ -9,4 +9,6 @@ public interface BillService extends DomainDao<Bill, Long> {
     List<Bill> findBillByOpenId(String openId, int page, int pageSize);
 
     List<Bill> findBillByState(Integer state, int page, int pageSize);
+
+    Long totalCount(Integer state);
 }

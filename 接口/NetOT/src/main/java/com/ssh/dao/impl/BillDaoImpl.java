@@ -47,7 +47,7 @@ public class BillDaoImpl implements BillDao {
 
     @Override
     public void saveOrUpdate(Bill entity) {
-
+        getCurrentSession().saveOrUpdate(entity);
     }
 
     @Override
@@ -74,5 +74,11 @@ public class BillDaoImpl implements BillDao {
         return getCurrentSession().createQuery(hql).setInteger(0, state).
                 setFirstResult((page - 1) * pageSize)
                 .setMaxResults(pageSize).list();
+    }
+
+    @Override
+    public Long totalCount(Integer state) {
+        String hql = "select count(*) from Bill where state=?";
+        return (Long) getCurrentSession().createQuery(hql).setInteger(0, state).uniqueResult();
     }
 }

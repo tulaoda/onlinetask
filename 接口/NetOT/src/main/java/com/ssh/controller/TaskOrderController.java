@@ -34,9 +34,7 @@ public class TaskOrderController {
     //添加任务
     @RequestMapping(value = "createTaskOrder", method = RequestMethod.GET)
     @ResponseBody
-    public Map createTaskOrder(String openId,
-                               Long taskId
-    ) {
+    public Map createTaskOrder(String openId, Long taskId) {
         Map map = new HashMap();
         System.out.println(openId + "   " + taskId);
         TaskOrder taskOrder = new TaskOrder();

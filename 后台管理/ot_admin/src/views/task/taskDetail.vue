@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <el-table :data="tableData5" border class="table-content">
+    <el-table :data="tableData5" class="table-content">
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
@@ -19,13 +19,7 @@
       </el-table-column>
       <el-table-column label="用户姓名" prop="user.name">
       </el-table-column>
-      <el-table-column label="备注">
-        <template slot-scope="scope">
-          <div slot="reference" class="name-wrapper">
-            {{ scope.row.remarks==null?'暂无':scope.row.remarks}}
-          </div>
-        </template>
-      </el-table-column>
+
       <el-table-column label="状态">
         <template slot-scope="scope">
           <div slot="reference" class="name-wrapper">
@@ -34,6 +28,13 @@
         </template>
       </el-table-column>
       <el-table-column label="创建时间" prop="createTime">
+      </el-table-column>
+      <el-table-column label="备注">
+        <template slot-scope="scope">
+          <div slot="reference" class="name-wrapper">
+            {{ scope.row.remarks==null?'暂无':scope.row.remarks}}
+          </div>
+        </template>
       </el-table-column>
       <el-table-column label="操作" width="200px">
         <template slot-scope="scope">
@@ -145,6 +146,7 @@ export default {
                   type: "success",
                   message: "更新成功"
                 });
+                that.findAllTask(that.taskID, 1);
               }
             });
 
@@ -171,6 +173,7 @@ export default {
                       type: "success",
                       message: "更新成功"
                     });
+                    that.findAllTask(that.taskID, 1);
                   }
                   console.log(res);
                 });

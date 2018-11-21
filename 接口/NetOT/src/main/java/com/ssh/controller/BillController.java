@@ -71,6 +71,7 @@ public class BillController {
                 bill.getUser().setEncashTotal(bill.getUser().getEncashTotal() + bill.getMoney());//加到已提现记录
             }
             bill.setState(state);
+            billService.saveOrUpdate(bill);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,12 +85,15 @@ public class BillController {
     public ResponseData findBillByState(Integer state, Integer page, Integer pageSize) {
         ResponseData responseData = ResponseData.ok();
         List<Bill> billList = null;
+        Long total = null;
         try {
             billList = billService.findBillByState(state, page, pageSize);
+            total = billService.totalCount(state);
         } catch (Exception e) {
             e.printStackTrace();
         }
         responseData.putDataValue("bill", billList);
+        responseData.putDataValue("total", total);
         return responseData;
     }
 }
