@@ -1,10 +1,10 @@
 <view class="container">
-  <i-panel title="" class="encash-input">
-    <i-input value="{{ value2 }}" type="number" title="金额" placeholder="请输入提现金额" />
-  </i-panel>
-  <i-button bind:click="handleClick" type="success" shape="circle" size="small" class="btn-submit">
-    提现
-  </i-button>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <i-panel>
+      <i-input value="{{ value1 }}" type="number" title="金额" placeholder="请输入提现金额" name="value1" />
+    </i-panel>
+    <button formType="submit" type="success" class="btn">提现</button>
+  </form>
   <scroll-view scroll-y style="height: 450px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="encash-record">
       <block wx:for="{{data}}" wx:key="*this.index">

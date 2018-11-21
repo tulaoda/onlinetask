@@ -62,8 +62,16 @@ public class BillDaoImpl implements BillDao {
 
     @Override
     public List<Bill> findBillByOpenId(String openId, int page, int pageSize) {
-        String hql = "from Bill where openId=?";
+        String hql = "from Bill where openId=? order by id desc";
         return getCurrentSession().createQuery(hql).setString(0, openId).
+                setFirstResult((page - 1) * pageSize)
+                .setMaxResults(pageSize).list();
+    }
+
+    @Override
+    public List<Bill> findBillByState(Integer state, int page, int pageSize) {
+        String hql = "from Bill where state=? order by id desc";
+        return getCurrentSession().createQuery(hql).setInteger(0, state).
                 setFirstResult((page - 1) * pageSize)
                 .setMaxResults(pageSize).list();
     }

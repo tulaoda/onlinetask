@@ -6,13 +6,15 @@ const SERVER = require('../../utils/server.js')
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    judgeAdmin: false
+    encashing: '',
+    encashTotal: '',
+    balance: ''
   },
   onLoad: function() {
+    this.getUser();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -40,26 +42,19 @@ Page({
       })
     }
   },
-  developing: function() {
-    wx.showToast({
-      title: '开发中,敬请期待!',
-      icon: 'none',
-      duration: 2000
-    })
-  },
-  // 判断是否为管理员
-  judgeAdmin: function() {
+  // 获取用户信息
+  getUser: function() {
     var that = this
-    //轮播图
-    SERVER.getJSON('/courier/judgeAdmin', {
+    SERVER.getJSON('/user/findUser', {
       openId: wx.getStorageSync('openid')
     }, function(res) {
-      if (res.data.code == 200) {
-        that.setData({
-          judgeAdmin: true
-        })
-      }
+      that.setData({
+        encashing: res.data.encashing,
+        encashTotal: res.data.encashTotal,
+        balance: res.data.balance
+      })
     })
+    // console.log(username + address + phone + school + openid)
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -69,9 +64,11 @@ Page({
       hasUserInfo: true
     })
   },
-  open: function() {
-    wx.makePhoneCall({
-      phoneNumber: '18920126411' // 仅为示例，并非真实的电话号码
-    })
-  }
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    this.getUser();
+  },
+
 })

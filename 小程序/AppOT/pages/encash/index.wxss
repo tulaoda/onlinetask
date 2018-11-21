@@ -5,7 +5,7 @@
 }
 
 .btn-submit {
-  /* margin: 100rpx 0; */
+  margin: 30rpx 0;
   width: 70%;
   margin-left: 15%;
 }
@@ -17,4 +17,14 @@
 
 .i-cell-text {
   font-weight: bold;
+}
+
+.btn {
+  margin: 30rpx 0;
+  width: 70%;
+  margin-left: 15%;
+  border-radius: 100rpx;
+  border: none;
+  background-color: #19be6b;
+  color: #fff;
 }

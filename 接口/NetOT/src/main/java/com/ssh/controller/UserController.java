@@ -157,7 +157,7 @@ public class UserController {
     public Map<String, String> findUser(String openId) {
         Map<String, String> map = new HashMap<String, String>();
         User user = userService.getUserByOpenId(openId);
-        if (user == null) { 
+        if (user == null) {
             map.put("msg", "执行失败！");
             return map;
         }
@@ -166,6 +166,9 @@ public class UserController {
         map.put("address", user.getAddress());
         map.put("wechat", user.getWechat());
         map.put("alipay", user.getAlipay());
+        map.put("encashing", user.getEncashing()+"");
+        map.put("encashTotal", user.getEncashTotal()+"");
+        map.put("balance", user.getBalance()+"");
         map.put("msg", "200");
         return map;
     }

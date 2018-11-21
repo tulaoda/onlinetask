@@ -22,6 +22,11 @@ public class BillServiceImpl implements BillService {
     }
 
     @Override
+    public List<Bill> findBillByState(Integer state, int page, int pageSize) {
+        return billDao.findBillByState(state, page, pageSize);
+    }
+
+    @Override
     public Bill load(Long id) {
         return billDao.load(id);
     }

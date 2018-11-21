@@ -11,18 +11,18 @@
   <view class="content">
     <view class="money-info" hover-class="none" hover-stop-propagation="false">
       <i-row i-class="demo-row">
-        <i-col span="12" i-class="demo-col first-col">
-          <view>10.00</view>
-          <view>余额</view>
+        <i-col span="8" i-class="demo-col first-col">
+          <view>{{encashing}}</view>
+          <view>提现中</view>
         </i-col>
-        <i-col span="12" i-class="demo-col">
-          <view>10.00</view>
+        <i-col span="8" i-class="demo-col">
+          <view>{{encashTotal}}</view>
           <view>已提现</view>
         </i-col>
-        <!-- <i-col span="8" i-class="demo-col">
-          <view>10.00</view>
+        <i-col span="8" i-class="demo-col">
+          <view>{{balance}}</view>
           <view>余额</view>
-        </i-col> -->
+        </i-col>
       </i-row>
     </view>
     <view class="weui-cells weui-cells_after-title">
