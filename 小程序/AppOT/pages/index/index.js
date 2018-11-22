@@ -1,4 +1,5 @@
 const SERVER = require('../../utils/server.js')
+const app = getApp()
 Page({
   data: {
     imgUrls: ['https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3864886031,2376753105&fm=11&gp=0.jpg',
@@ -10,25 +11,28 @@ Page({
     duration: 1000,
     grids: [0, 1, 2, 3],
     msgList: [{
-      url: 'url',
-      title: '消息：用户蜡笔小新完成任务，获得佣金三块'
-    },
-    {
-      url: 'url',
-      title: '消息：悦如公寓三周年生日趴邀你免费吃喝欢唱'
-    },
-    {
-      url: 'url',
-      title: '消息：你想和一群有志青年一起过生日嘛？'
-    }
-    ]
-
+        url: 'url',
+        title: '消息：用户蜡笔小新完成任务，获得佣金三块'
+      },
+      {
+        url: 'url',
+        title: '消息：悦如公寓三周年生日趴邀你免费吃喝欢唱'
+      },
+      {
+        url: 'url',
+        title: '消息：你想和一群有志青年一起过生日嘛？'
+      }
+    ],
+    visible1: false
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(e) {
     // 小程序版本更新提示
+    var that = this;
+    // 获取用户信息
+    this.getUser();
 
     // 检查是否存在新版本
     wx.getUpdateManager().onCheckForUpdate(function(res) {
@@ -104,5 +108,42 @@ Page({
     this.setData({
       duration: e.detail.value
     })
-  }
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    var that = this
+    // 轮播图
+    SERVER.getJSON('/banner/listBanner', {}, function(res) {
+      const imgUrls = []
+      res.data.content.map(item => {
+        imgUrls.push(item.imgUrl)
+      })
+      that.setData({
+        imgUrls: imgUrls
+      })
+    })
+  },
+  getUserInfo: function(e) {
+    console.log(e)
+    this.setData({
+      hasUserInfo: true,
+      visible1: true
+    })
+  },
+
+  // 获取用户信息
+  getUser: function() {
+    var that = this
+    SERVER.getJSON('/user/findUser', {
+      openId: wx.getStorageSync('openid')
+    }, function(res) {
+      if (res.data.name == "") {
+        that.data.visible1 = true
+      }
+
+    })
+    // console.log(username + address + phone + school + openid)
+  },
 })

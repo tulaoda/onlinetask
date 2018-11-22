@@ -46,7 +46,7 @@ public class BannerDaoImpl implements BannerDao {
     }
 
     public void delete(Long id) {
-        Banner banner = load(id);
+        Banner banner = get(id);
         getCurrentSession().delete(banner);
     }
 

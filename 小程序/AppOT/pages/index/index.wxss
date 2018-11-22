@@ -22,6 +22,7 @@
 
 .container {
   text-align: center;
+  position: relative;
 }
 
 .footer {
@@ -64,5 +65,43 @@
 .weui-grids {
   border-radius: 30rpx;
   box-shadow: 0 0 50rpx 0 hsla(0, 0%, 71%, 0.24);
+}
 
+.shandow {
+  top: 0;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.modal {
+  text-align: center;
+  width: 60%;
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 0 50rpx 0 hsla(0, 0%, 71%, 0.24);
+  padding: 20rpx 30rpx;
+}
+
+.btn {
+  margin-top: 30rpx;
+  border-radius: 100rpx;
+  width: 40%;
+  border: none;
+  background-color: #19be6b;
+  color: #fff;
+}
+
+.btn-content {
+  margin-top: 20rpx;
+}
+
+.title {
+  border-bottom: 1px solid #eee;
 }

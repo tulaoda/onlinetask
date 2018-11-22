@@ -40,7 +40,7 @@ public class BannerServiceImpl implements BannerService {
     }
 
     public void delete(Long id) {
-
+         bannerDao.delete(id);
     }
 
     public void flush() {

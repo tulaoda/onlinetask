@@ -82,7 +82,7 @@ export default {
       centerDialogVisible: false,
       tableData5: [],
       tmpImg: "",
-      stateMsg: ["提现中", "提现通过", "提现失败"],
+      stateMsg: ["提现中", "提现完成", "提现失败"],
       remarks: "", //提现不通过原因
       total: 0
     };

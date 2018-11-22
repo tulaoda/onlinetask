@@ -43,6 +43,7 @@ public class TaskOrderController {
         taskOrder.setState(0);
         Task task = new Task();
         task = taskService.get(taskId);
+        task.setRemainNo(task.getRemainNo()-1);
         taskOrder.setTask(task);
         long id = taskOrderService.save(taskOrder);
         if (id > 0) {

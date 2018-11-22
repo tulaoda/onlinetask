@@ -40,6 +40,7 @@ public class TaskController {
         task.setArticle(article);
         task.setTotalNo(totalNo);
         task.setCreateTime(CreateOrderID.getCurrentTime());
+        task.setRemainNo(totalNo);
         System.out.println(name + commission + article + totalNo + taskImgs);
 
         for (int i = 0; i < taskImgs.length; i++) {
